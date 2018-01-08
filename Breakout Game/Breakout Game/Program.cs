@@ -16,7 +16,7 @@ namespace Breakout_Game
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Breakout());
+            Application.Run(new GameClient());
         }
     }
 }

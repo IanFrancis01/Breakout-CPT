@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Breakout_Game
 {
-    public partial class Breakout : Form
+    public partial class GameClient : Form
     {
-        public Breakout()
+        public GameClient()
         {
             InitializeComponent();
         }
