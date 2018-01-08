@@ -1,6 +1,6 @@
 ﻿namespace Breakout_Game
 {
-    partial class Form1
+    partial class Breakout
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Breakout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Name = "Form1";
+            this.Name = "Breakout";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
