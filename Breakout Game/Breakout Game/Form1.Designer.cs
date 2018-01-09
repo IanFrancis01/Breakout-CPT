@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameClient));
             this.BallPaddle = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BallPaddle)).BeginInit();
             this.SuspendLayout();
             // 
             // BallPaddle
             // 
-            this.BallPaddle.BackgroundImage = global::Breakout_Game.Properties.Resources.paddle;
+            this.BallPaddle.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BallPaddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BallPaddle.Location = new System.Drawing.Point(282, 541);
+            this.BallPaddle.Location = new System.Drawing.Point(271, 532);
             this.BallPaddle.Name = "BallPaddle";
             this.BallPaddle.Size = new System.Drawing.Size(249, 27);
             this.BallPaddle.TabIndex = 0;
@@ -46,6 +47,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(836, 580);
             this.Controls.Add(this.BallPaddle);
             this.Name = "GameClient";
