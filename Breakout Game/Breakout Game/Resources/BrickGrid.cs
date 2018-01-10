@@ -11,9 +11,9 @@ namespace Breakout_Game.Resources
        //private fields // members//
        
        //Constructors//
-       public Grid(int Rows, int Columns, int CellSize)
+       public bool Grid(int Rows, int Columns, int CellSize)
        {
-
+           return false;
        }
     }
 }
