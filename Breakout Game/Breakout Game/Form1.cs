@@ -44,13 +44,25 @@ namespace Breakout_Game
             //check if left is pressed
             else if (e.KeyCode == Keys.Left)
             {
-                picBallPaddle.Left -= 10;
+                if (picBallPaddle.Left  - 10 <= 0)
+                {
+                }
+                else
+                {
+                    picBallPaddle.Left -= 10;
+                }
             }
 
             //check if right is pressed
             else if (e.KeyCode == Keys.Right)
             {
-                picBallPaddle.Left += 10;
+                if (picBallPaddle.Right + 10 >= ClientSize.Width)
+                {
+                }
+                else
+                {
+                    picBallPaddle.Left += 10;
+                }
             }
 
         }
