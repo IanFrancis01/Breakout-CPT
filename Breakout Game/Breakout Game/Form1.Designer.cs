@@ -43,16 +43,18 @@
             this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTutorial = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBallPaddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).BeginInit();
             this.mnuMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // picBallPaddle
             // 
             this.picBallPaddle.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.picBallPaddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBallPaddle.Location = new System.Drawing.Point(309, 548);
+            this.picBallPaddle.Location = new System.Drawing.Point(359, 548);
             this.picBallPaddle.Name = "picBallPaddle";
             this.picBallPaddle.Size = new System.Drawing.Size(100, 20);
             this.picBallPaddle.TabIndex = 0;
@@ -61,7 +63,7 @@
             // picBall
             // 
             this.picBall.BackColor = System.Drawing.SystemColors.Window;
-            this.picBall.Location = new System.Drawing.Point(346, 517);
+            this.picBall.Location = new System.Drawing.Point(395, 517);
             this.picBall.Name = "picBall";
             this.picBall.Size = new System.Drawing.Size(25, 25);
             this.picBall.TabIndex = 1;
@@ -148,16 +150,30 @@
             this.mnuTutorial.Size = new System.Drawing.Size(115, 22);
             this.mnuTutorial.Text = "Tutorial";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = global::Breakout_Game.Properties.Resources.bricktexture11;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(91, 25);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // GameClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(836, 580);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picBall);
             this.Controls.Add(this.picBallPaddle);
             this.Controls.Add(this.mnuMenu);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.mnuMenu;
             this.Name = "GameClient";
             this.Text = "Breakout";
@@ -167,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).EndInit();
             this.mnuMenu.ResumeLayout(false);
             this.mnuMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,6 +204,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuTutorial;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

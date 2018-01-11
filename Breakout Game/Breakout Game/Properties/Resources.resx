@@ -121,7 +121,13 @@
   <data name="paddle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paddle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bricktexture1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bricktexture1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="paddle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paddle1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bricktexture11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bricktexture11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

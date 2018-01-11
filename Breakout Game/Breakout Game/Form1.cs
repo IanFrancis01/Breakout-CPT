@@ -30,22 +30,24 @@ namespace Breakout_Game
         {
             //this event will run when a key is pressed.
            // MessageBox.Show("Key pressed " + e.KeyCode);
-            picBall.Top -= 1;
+            
 
             //if return is pressed, enable the timer
             if (e.KeyCode == Keys.Return)
             {
-                tmrGame.Enabled = true;
+                
+                
             }
 
             //if escape key is pressed, disable the timer
             else if (e.KeyCode == Keys.Escape) tmrGame.Enabled = false;
 
             //check if left is pressed
-            else if (e.KeyCode == Keys.Left)
+             if (e.KeyCode == Keys.Left)
             {
                 if (picBallPaddle.Left  - 10 <= 0)
                 {
+
                 }
                 else
                 {
@@ -54,7 +56,7 @@ namespace Breakout_Game
             }
 
             //check if right is pressed
-            else if (e.KeyCode == Keys.Right)
+             if (e.KeyCode == Keys.Right)
             {
                 if (picBallPaddle.Right + 10 >= ClientSize.Width)
                 {

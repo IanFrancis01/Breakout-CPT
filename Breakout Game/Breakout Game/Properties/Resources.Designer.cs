@@ -63,6 +63,26 @@ namespace Breakout_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bricktexture1 {
+            get {
+                object obj = ResourceManager.GetObject("bricktexture1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bricktexture11 {
+            get {
+                object obj = ResourceManager.GetObject("bricktexture11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paddle {
             get {
                 object obj = ResourceManager.GetObject("paddle", resourceCulture);
