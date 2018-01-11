@@ -13,16 +13,29 @@ using System.Threading;
 
 namespace Breakout_Game
 {
+    enum PlayerState
+    {
+        Left,
+        Right,
+        None
+    }
+
     public partial class GameClient : Form
     {
         public GameClient()
         {
             InitializeComponent();
+            tmrGame.Enabled = false;
+            MessageBox.Show("Welcome to Breakout!");
+            MessageBox.Show("Before we begin, here are the controls:\n\nPress left or right arrow to move the paddle.\n\nPress Escape to pause the game.\n\nPress Enter/Return to resume the game.");
+            MessageBox.Show("For a the rules of the game and more, please refer to the ''Help'' tab on the top left.");
+            MessageBox.Show("After closing this box, please press Enter/Return to begin.");
         }
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
             //this event will run when enabled and for each time intveral set in properties
+            picBall.Top -= 1;
             
         }
 
@@ -35,12 +48,15 @@ namespace Breakout_Game
             //if return is pressed, enable the timer
             if (e.KeyCode == Keys.Return)
             {
-                
-                
+                tmrGame.Enabled = true;
             }
 
+            //if the game is unpaused
+            if(tmrGame.Enabled == true)
+            { 
+
             //if escape key is pressed, disable the timer
-            else if (e.KeyCode == Keys.Escape) tmrGame.Enabled = false;
+            if (e.KeyCode == Keys.Escape) tmrGame.Enabled = false;
 
             //check if left is pressed
              if (e.KeyCode == Keys.Left)
@@ -68,6 +84,7 @@ namespace Breakout_Game
             }
 
         }
+        }//end of unpaused game.
 
         private void mnuClose_Click(object sender, EventArgs e)
         {
@@ -75,6 +92,11 @@ namespace Breakout_Game
         }
 
         private void GameClient_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuTutorial_Click(object sender, EventArgs e)
         {
 
         }

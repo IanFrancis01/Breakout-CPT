@@ -147,8 +147,9 @@
             // mnuTutorial
             // 
             this.mnuTutorial.Name = "mnuTutorial";
-            this.mnuTutorial.Size = new System.Drawing.Size(115, 22);
+            this.mnuTutorial.Size = new System.Drawing.Size(152, 22);
             this.mnuTutorial.Text = "Tutorial";
+            this.mnuTutorial.Click += new System.EventHandler(this.mnuTutorial_Click);
             // 
             // pictureBox1
             // 
