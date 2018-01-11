@@ -71,5 +71,10 @@ namespace Breakout_Game
         {
 
         }
+
+        private void GameClient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

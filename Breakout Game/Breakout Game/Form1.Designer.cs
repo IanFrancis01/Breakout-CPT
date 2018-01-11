@@ -35,11 +35,11 @@
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.mnuMenu = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPause = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRestart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLevels = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPause = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuRestart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTutorial = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +52,7 @@
             // 
             this.picBallPaddle.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.picBallPaddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBallPaddle.Location = new System.Drawing.Point(342, 548);
+            this.picBallPaddle.Location = new System.Drawing.Point(309, 548);
             this.picBallPaddle.Name = "picBallPaddle";
             this.picBallPaddle.Size = new System.Drawing.Size(100, 20);
             this.picBallPaddle.TabIndex = 0;
@@ -61,7 +61,7 @@
             // picBall
             // 
             this.picBall.BackColor = System.Drawing.SystemColors.Window;
-            this.picBall.Location = new System.Drawing.Point(381, 517);
+            this.picBall.Location = new System.Drawing.Point(346, 517);
             this.picBall.Name = "picBall";
             this.picBall.Size = new System.Drawing.Size(25, 25);
             this.picBall.TabIndex = 1;
@@ -94,43 +94,43 @@
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "File";
             // 
+            // mnuPause
+            // 
+            this.mnuPause.Name = "mnuPause";
+            this.mnuPause.Size = new System.Drawing.Size(112, 22);
+            this.mnuPause.Text = "Pause";
+            // 
+            // mnuRestart
+            // 
+            this.mnuRestart.Name = "mnuRestart";
+            this.mnuRestart.Size = new System.Drawing.Size(112, 22);
+            this.mnuRestart.Text = "Restart";
+            // 
             // mnuLevels
             // 
             this.mnuLevels.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.mnuLevels.Name = "mnuLevels";
-            this.mnuLevels.Size = new System.Drawing.Size(152, 22);
+            this.mnuLevels.Size = new System.Drawing.Size(112, 22);
             this.mnuLevels.Text = "Levels";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 22);
             this.toolStripMenuItem2.Text = "1";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 22);
             this.toolStripMenuItem3.Text = "2";
-            // 
-            // mnuPause
-            // 
-            this.mnuPause.Name = "mnuPause";
-            this.mnuPause.Size = new System.Drawing.Size(152, 22);
-            this.mnuPause.Text = "Pause";
-            // 
-            // mnuRestart
-            // 
-            this.mnuRestart.Name = "mnuRestart";
-            this.mnuRestart.Size = new System.Drawing.Size(152, 22);
-            this.mnuRestart.Text = "Restart";
             // 
             // mnuClose
             // 
             this.mnuClose.Name = "mnuClose";
-            this.mnuClose.Size = new System.Drawing.Size(152, 22);
+            this.mnuClose.Size = new System.Drawing.Size(112, 22);
             this.mnuClose.Text = "Close...";
             this.mnuClose.Click += new System.EventHandler(this.mnuClose_Click);
             // 
@@ -145,7 +145,7 @@
             // mnuTutorial
             // 
             this.mnuTutorial.Name = "mnuTutorial";
-            this.mnuTutorial.Size = new System.Drawing.Size(152, 22);
+            this.mnuTutorial.Size = new System.Drawing.Size(115, 22);
             this.mnuTutorial.Text = "Tutorial";
             // 
             // GameClient
@@ -161,6 +161,7 @@
             this.MainMenuStrip = this.mnuMenu;
             this.Name = "GameClient";
             this.Text = "Breakout";
+            this.Load += new System.EventHandler(this.GameClient_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameClient_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picBallPaddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).EndInit();
