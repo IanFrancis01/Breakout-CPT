@@ -32,8 +32,7 @@ namespace Breakout_Game
             InitializeComponent();
             // tmrGame.Enabled = false;
             /*
-            MessageBox.Show("Welcome to Breakout!");
-            MessageBox.Show("Before we begin, here are the controls:\n\nPress left or right arrow to move the paddle.\n\nPress Escape to pause the game.\n\nPress Enter/Return to resume the game.");
+            MessageBox.Show("Welcome to Breakout!\nBefore we begin, here are the controls:\n\nPress left or right arrow to move the paddle.\n\nPress Escape to pause the game.\n\nPress Enter/Return to resume the game.");
             MessageBox.Show("For a the rules of the game and more, please refer to the ''Help'' tab on the top left.");
             MessageBox.Show("After closing this box, please press Enter/Return to begin.");
              */
@@ -115,10 +114,11 @@ namespace Breakout_Game
             //This event will run when a key is let go
 
             if (e.KeyCode == Keys.Left)
-                Player = PlayerState.Left;
+                Player = PlayerState.None;
 
             else if (e.KeyCode == Keys.Right)
-                Player = PlayerState.Right;
+                Player = PlayerState.None;
         }
-    }
+
+    }//end of form
 }
