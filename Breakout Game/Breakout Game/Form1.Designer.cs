@@ -147,7 +147,7 @@
             // mnuTutorial
             // 
             this.mnuTutorial.Name = "mnuTutorial";
-            this.mnuTutorial.Size = new System.Drawing.Size(152, 22);
+            this.mnuTutorial.Size = new System.Drawing.Size(115, 22);
             this.mnuTutorial.Text = "Tutorial";
             this.mnuTutorial.Click += new System.EventHandler(this.mnuTutorial_Click);
             // 
@@ -180,6 +180,7 @@
             this.Text = "Breakout";
             this.Load += new System.EventHandler(this.GameClient_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameClient_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameClient_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picBallPaddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).EndInit();
             this.mnuMenu.ResumeLayout(false);
