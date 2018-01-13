@@ -60,8 +60,7 @@ namespace Breakout_Game
             else
             {
 
-            }
-                
+            }   
 
             //draw ball
             Position += Velocity;
@@ -132,10 +131,6 @@ namespace Breakout_Game
             {
                 if (tmrGame.Enabled == false)
                 {
-                    if (e.KeyCode == Keys.Space)
-                    {
-                        //do nothing.
-                    }
                     tmrGame.Enabled = true;
                 }
             }
