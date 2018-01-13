@@ -113,8 +113,11 @@ namespace Breakout_Game
                 Reset();
                 Velocity.X = 0;
                 Velocity.Y = 0;
-                PlayerLives = 3;
+
                 //insert code for score reset
+
+                PlayerLives = 3;
+                Player = PlayerState.None;
                 MessageBox.Show("GAME OVER.");
                 lblLives.Text = "Lives left: " + PlayerLives;
             }
