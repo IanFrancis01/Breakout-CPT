@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameClient));
-            this.picBallPaddle = new System.Windows.Forms.PictureBox();
+            this.picPlayer = new System.Windows.Forms.PictureBox();
             this.picBall = new System.Windows.Forms.PictureBox();
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.mnuMenu = new System.Windows.Forms.MenuStrip();
@@ -44,26 +44,27 @@
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTutorial = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picBallPaddle)).BeginInit();
+            this.lblLives = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).BeginInit();
             this.mnuMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // picBallPaddle
+            // picPlayer
             // 
-            this.picBallPaddle.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.picBallPaddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBallPaddle.Location = new System.Drawing.Point(359, 548);
-            this.picBallPaddle.Name = "picBallPaddle";
-            this.picBallPaddle.Size = new System.Drawing.Size(100, 20);
-            this.picBallPaddle.TabIndex = 0;
-            this.picBallPaddle.TabStop = false;
+            this.picPlayer.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.picPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picPlayer.Location = new System.Drawing.Point(368, 522);
+            this.picPlayer.Name = "picPlayer";
+            this.picPlayer.Size = new System.Drawing.Size(100, 20);
+            this.picPlayer.TabIndex = 0;
+            this.picPlayer.TabStop = false;
             // 
             // picBall
             // 
             this.picBall.BackColor = System.Drawing.SystemColors.Window;
-            this.picBall.Location = new System.Drawing.Point(395, 517);
+            this.picBall.Location = new System.Drawing.Point(405, 480);
             this.picBall.Name = "picBall";
             this.picBall.Size = new System.Drawing.Size(25, 25);
             this.picBall.TabIndex = 1;
@@ -162,6 +163,18 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // lblLives
+            // 
+            this.lblLives.AutoSize = true;
+            this.lblLives.BackColor = System.Drawing.Color.Transparent;
+            this.lblLives.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLives.ForeColor = System.Drawing.Color.White;
+            this.lblLives.Location = new System.Drawing.Point(713, 37);
+            this.lblLives.Name = "lblLives";
+            this.lblLives.Size = new System.Drawing.Size(111, 21);
+            this.lblLives.TabIndex = 4;
+            this.lblLives.Text = "Lives left: 3";
+            // 
             // GameClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,16 +185,18 @@
             this.ClientSize = new System.Drawing.Size(836, 580);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picBall);
-            this.Controls.Add(this.picBallPaddle);
+            this.Controls.Add(this.picPlayer);
             this.Controls.Add(this.mnuMenu);
+            this.Controls.Add(this.lblLives);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.mnuMenu;
             this.Name = "GameClient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Breakout";
             this.Load += new System.EventHandler(this.GameClient_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameClient_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameClient_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.picBallPaddle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).EndInit();
             this.mnuMenu.ResumeLayout(false);
             this.mnuMenu.PerformLayout();
@@ -193,7 +208,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picBallPaddle;
+        private System.Windows.Forms.PictureBox picPlayer;
         private System.Windows.Forms.PictureBox picBall;
         private System.Windows.Forms.Timer tmrGame;
         private System.Windows.Forms.MenuStrip mnuMenu;
@@ -207,6 +222,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuTutorial;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblLives;
     }
 }
 
