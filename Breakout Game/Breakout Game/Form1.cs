@@ -51,12 +51,15 @@ namespace Breakout_Game
             {
                 picPlayer.Left -= 10;
             }
+
             else if (Player == PlayerState.Right)
             {
                 picPlayer.Left += 10;
             }
+
             else
             {
+
             }
                 
 
@@ -130,7 +133,10 @@ namespace Breakout_Game
             }
 
             //if escape key is pressed, disable the timer
-            if (e.KeyCode == Keys.Escape) tmrGame.Enabled = false;
+            if (e.KeyCode == Keys.Escape)
+            {
+                tmrGame.Enabled = false;
+            }
 
             //check if left is pressed
             if (e.KeyCode == Keys.Left)
@@ -143,7 +149,7 @@ namespace Breakout_Game
                 }
                 else
                 {
-                   Player = PlayerState.Left;
+                    Player = PlayerState.Left;
                 }
             }
 
