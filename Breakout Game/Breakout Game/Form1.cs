@@ -26,7 +26,7 @@ namespace Breakout_Game
         //global variables
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
-        bool StartofGame = true;
+        bool CanStart = true;
 
         //ball variables
         float Speed; //speed of ball
@@ -51,8 +51,9 @@ namespace Breakout_Game
             lblBegin.Text = string.Empty;
             lblForHelp.Text = string.Empty;
 
+
             //game has now started
-            StartofGame = false;
+            CanStart = false; 
 
             //Move player
             if (Player == PlayerState.Left)
@@ -63,7 +64,7 @@ namespace Breakout_Game
             else if (Player == PlayerState.Right)
             {
                 picPlayer.Left += 10;
-            }  
+            }
 
             //draw ball
             Position += Velocity;
@@ -97,7 +98,7 @@ namespace Breakout_Game
             //losing a life
             if(picBall.Top >= ClientSize.Height)
             {
-                //deductingn a life and displaying it
+                //deducting a life and displaying it
                 PlayerLives -= 1;
                 lblLives.Text = "Lives left: " + PlayerLives;
                 
@@ -105,6 +106,8 @@ namespace Breakout_Game
                 Reset();
                 Velocity.X = 0;
                 Velocity.Y = 0;
+
+                CanStart = true;
             }
 
             //check if out of lives
@@ -120,6 +123,8 @@ namespace Breakout_Game
                 Player = PlayerState.None;
                 MessageBox.Show("GAME OVER.");
                 lblLives.Text = "Lives left: " + PlayerLives;
+                CanStart = true;
+
             }
         }
 
@@ -139,7 +144,7 @@ namespace Breakout_Game
             //if space key is pressed, start the game.
             if (e.KeyCode == Keys.Space)
             {
-                if (StartofGame == true)
+                if (CanStart == true)
                 {
                     //Start the game;
                     Reset();
@@ -246,7 +251,7 @@ namespace Breakout_Game
             lblPressEnter.Text = String.Empty;
 
             //game has not begun
-            StartofGame = false;
+            CanStart = true;
         }
 
         private void mnuClose_Click(object sender, EventArgs e)
