@@ -8,3 +8,6 @@ C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\bin\Debug\Br
 C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\bin\Debug\Breakout Game.pdb
 C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.exe
 C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.pdb
+C:\Users\Divine\Source\Repos\Breakout-CPT\Breakout Game\Breakout Game\bin\Debug\Breakout Game.exe.config
+C:\Users\Divine\Source\Repos\Breakout-CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.exe
+C:\Users\Divine\Source\Repos\Breakout-CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.pdb
