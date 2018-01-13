@@ -26,6 +26,7 @@ namespace Breakout_Game
         //global variables
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
+        bool StartofGame = true;
 
         //ball variables
         float Speed; //speed of ball
@@ -49,6 +50,9 @@ namespace Breakout_Game
             lblWelcome.Text = string.Empty;
             lblBegin.Text = string.Empty;
             lblForHelp.Text = string.Empty;
+
+            //game has now started
+            StartofGame = false;
 
             //Move player
             if (Player == PlayerState.Left)
@@ -135,9 +139,12 @@ namespace Breakout_Game
             //if space key is pressed, start the game.
             if (e.KeyCode == Keys.Space)
             {
-                //Start the game;
-                Reset();
-                tmrGame.Enabled = true;
+                if (StartofGame == true)
+                {
+                    //Start the game;
+                    Reset();
+                    tmrGame.Enabled = true;
+                }
             }
 
             //if escape key is pressed, disable the timer, pausing the game.
@@ -234,9 +241,12 @@ namespace Breakout_Game
             lblLives.Text = "Lives Left: " + PlayerLives;
             lblWelcome.Text = "Welcome!";
             lblBegin.Text = "Please press the SPACEBAR to play.";
-            lblForHelp.Text = "For controls and rules of the game,\n               press ''='' at any time.";
+            lblForHelp.Text = "For controls and rules of the game,\n              press ''='' at any time.";
             lblGamePaused.Text = String.Empty;
             lblPressEnter.Text = String.Empty;
+
+            //game has not begun
+            StartofGame = false;
         }
 
         private void mnuClose_Click(object sender, EventArgs e)
@@ -309,7 +319,7 @@ namespace Breakout_Game
         public void Collision()
         {
             //max speed is 11
-            if (Speed < 11)
+            if (Speed < 15)
             {
                 Velocity.X *= 1.1f;
                 Velocity.Y *= -1.1f;
