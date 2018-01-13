@@ -10,5 +10,6 @@ namespace Breakout_Game
     class Ball
     {
         //how much of the code for the ball can we put in a ball class?
+
     }
 }

@@ -74,6 +74,7 @@ namespace Breakout_Game
 
             //detect collision between ball and brick
 
+
             //Change direction of the ball
 
             //ball hits the top of the client
@@ -105,9 +106,14 @@ namespace Breakout_Game
             if(PlayerLives <= 0)
             {
                 Reset();
+                //resetting the ball's location
+                Reset();
+                Velocity.X = 0;
+                Velocity.Y = 0;
                 PlayerLives = 3;
                 //insert code for score reset
                 MessageBox.Show("GAME OVER.");
+                lblLives.Text = "Lives left: " + PlayerLives;
             }
         }
 
@@ -147,7 +153,7 @@ namespace Breakout_Game
                 if (picPlayer.Left + 110 >= ClientSize.Width)
                 {
                     //at edge of screen
-                    picPlayer.Left = ClientSize.Width - 110;
+                    picPlayer.Left = ClientSize.Width - 100;
                     Player = PlayerState.None;
                 }
                 else
@@ -209,7 +215,7 @@ namespace Breakout_Game
             Velocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
         }
 
-        //Method for collisions
+        //Method for collisions        
         public void Collision()
         {
             //max speed is 11
