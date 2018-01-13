@@ -200,7 +200,7 @@ namespace Breakout_Game
                     "\nAnd whenever it does so, it picks up speed.\n\nHowever, if the ball hits the bottom of the level, you lose a life." +
                     "\nWatch out, you only have 3 lives!\nRemaining lives are labeled at the top right of the screen at all times.");
 
-                MessageBox.Show("Press left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
+                MessageBox.Show("Press the left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
                     "\nPress Enter/Return to resume the game.");
 
                 lblPressEnter.Text = "Press ENTER to continue.";
@@ -267,7 +267,7 @@ namespace Breakout_Game
         private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //game controls
-            MessageBox.Show("Press left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
+            MessageBox.Show("Press the left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
                 "\nPress Enter/Return to resume the game.");
         }
 
