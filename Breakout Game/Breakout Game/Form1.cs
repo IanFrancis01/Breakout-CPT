@@ -48,11 +48,16 @@ namespace Breakout_Game
 
             //Move player
             if (Player == PlayerState.Left)
+            {
                 picPlayer.Left -= 10;
+            }
             else if (Player == PlayerState.Right)
+            {
                 picPlayer.Left += 10;
+            }
             else
-            { }
+            {
+            }
                 
 
             //draw ball
@@ -127,6 +132,7 @@ namespace Breakout_Game
                 if (picPlayer.Left - 10 <= 0)
                 {
                     //at edge of screen
+                    picPlayer.Left = 1;
                     Player = PlayerState.None;
                 }
                 else
@@ -138,9 +144,10 @@ namespace Breakout_Game
             //check if right is pressed
             if (e.KeyCode == Keys.Right)
             {
-                if (picPlayer.Right + 10 >= ClientSize.Width)
+                if (picPlayer.Left + 110 >= ClientSize.Width)
                 {
                     //at edge of screen
+                    picPlayer.Left = ClientSize.Width - 110;
                     Player = PlayerState.None;
                 }
                 else
