@@ -64,7 +64,7 @@ namespace Breakout_Game
                 
 
             //draw ball
-            Position = Position + Velocity;
+            Position += Velocity;
             picBall.Left = (int)Position.X;
             picBall.Top = (int)Position.Y;
 
@@ -108,7 +108,6 @@ namespace Breakout_Game
             //check if out of lives
             if(PlayerLives <= 0)
             {
-                Reset();
                 //resetting the ball's location
                 Reset();
                 Velocity.X = 0;
@@ -116,6 +115,7 @@ namespace Breakout_Game
 
                 //insert code for score reset
 
+                //reset player
                 PlayerLives = 3;
                 Player = PlayerState.None;
                 MessageBox.Show("GAME OVER.");
@@ -127,15 +127,28 @@ namespace Breakout_Game
         {
             //this event will run when a key is pressed.
 
-            //if return is pressed, enable the timer
+            //if return is pressed, enable the timer, unpausing the game
             if (e.KeyCode == Keys.Return)
             {
-                //reset the game
+                if (tmrGame.Enabled == false)
+                {
+                    if (e.KeyCode == Keys.Space)
+                    {
+                        //do nothing.
+                    }
+                    tmrGame.Enabled = true;
+                }
+            }
+
+            //if space key is pressed, start the game.
+            if (e.KeyCode == Keys.Space)
+            {
+                //Start//reset the game
                 Reset();
                 tmrGame.Enabled = true;
             }
 
-            //if escape key is pressed, disable the timer
+            //if escape key is pressed, disable the timer, pausing the game.
             if (e.KeyCode == Keys.Escape)
             {
                 tmrGame.Enabled = false;
