@@ -1,0 +1,10 @@
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\bin\Release\Breakout Game.exe.config
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\bin\Release\Breakout Game.exe
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\bin\Release\Breakout Game.pdb
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout Game.csprojResolveAssemblyReference.cache
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout_Game.GameClient.resources
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout_Game.Properties.Resources.resources
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout Game.csproj.GenerateResource.Cache
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout Game.csproj.CoreCompileInputs.cache
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout Game.exe
+C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Release\Breakout Game.pdb

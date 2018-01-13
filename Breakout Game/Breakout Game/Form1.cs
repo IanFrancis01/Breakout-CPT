@@ -35,6 +35,8 @@ namespace Breakout_Game
         public GameClient()
         {
             InitializeComponent();
+            lblGamePaused.Text = string.Empty;
+            lblPressEnter.Text = string.Empty;
             /*
             MessageBox.Show("Welcome to Breakout!\nBefore we begin, here are the controls:\n\nPress left or right arrow to move the paddle.\n\nPress Escape to pause the game.\n\nPress Enter/Return to resume the game.");
             MessageBox.Show("For a the rules of the game and more, please refer to the ''Help'' tab on the top left.");
@@ -45,6 +47,9 @@ namespace Breakout_Game
         private void tmrGame_Tick(object sender, EventArgs e)
         {
             //this event will run when enabled and for each time intveral set in properties
+
+            lblGamePaused.Text = string.Empty;
+            lblPressEnter.Text = string.Empty;
 
             //Move player
             if (Player == PlayerState.Left)
@@ -112,8 +117,6 @@ namespace Breakout_Game
                 Velocity.X = 0;
                 Velocity.Y = 0;
 
-                //insert code for score reset
-
                 //reset player
                 PlayerLives = 3;
                 Player = PlayerState.None;
@@ -147,6 +150,8 @@ namespace Breakout_Game
             if (e.KeyCode == Keys.Escape)
             {
                 tmrGame.Enabled = false;
+                lblGamePaused.Text = "Game Paused";
+                lblPressEnter.Text = "Press ENTER to continue.";
             }
 
             //check if left is pressed

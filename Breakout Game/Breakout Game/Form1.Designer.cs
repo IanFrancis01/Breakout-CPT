@@ -45,6 +45,8 @@
             this.mnuTutorial = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLives = new System.Windows.Forms.Label();
+            this.lblPressEnter = new System.Windows.Forms.Label();
+            this.lblGamePaused = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).BeginInit();
             this.mnuMenu.SuspendLayout();
@@ -175,6 +177,30 @@
             this.lblLives.TabIndex = 4;
             this.lblLives.Text = "Lives left: 3";
             // 
+            // lblPressEnter
+            // 
+            this.lblPressEnter.AutoSize = true;
+            this.lblPressEnter.BackColor = System.Drawing.Color.Transparent;
+            this.lblPressEnter.Font = new System.Drawing.Font("Rockwell", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPressEnter.ForeColor = System.Drawing.Color.White;
+            this.lblPressEnter.Location = new System.Drawing.Point(212, 285);
+            this.lblPressEnter.Name = "lblPressEnter";
+            this.lblPressEnter.Size = new System.Drawing.Size(441, 42);
+            this.lblPressEnter.TabIndex = 5;
+            this.lblPressEnter.Text = "Press ENTER to continue.";
+            // 
+            // lblGamePaused
+            // 
+            this.lblGamePaused.AutoSize = true;
+            this.lblGamePaused.BackColor = System.Drawing.Color.Transparent;
+            this.lblGamePaused.Font = new System.Drawing.Font("Rockwell", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGamePaused.ForeColor = System.Drawing.Color.White;
+            this.lblGamePaused.Location = new System.Drawing.Point(304, 243);
+            this.lblGamePaused.Name = "lblGamePaused";
+            this.lblGamePaused.Size = new System.Drawing.Size(253, 42);
+            this.lblGamePaused.TabIndex = 6;
+            this.lblGamePaused.Text = "Game Paused";
+            // 
             // GameClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +209,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(836, 580);
+            this.Controls.Add(this.lblGamePaused);
+            this.Controls.Add(this.lblPressEnter);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picBall);
             this.Controls.Add(this.picPlayer);
@@ -223,6 +251,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTutorial;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblLives;
+        private System.Windows.Forms.Label lblPressEnter;
+        private System.Windows.Forms.Label lblGamePaused;
     }
 }
 
