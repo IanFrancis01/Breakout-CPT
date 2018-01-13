@@ -35,21 +35,20 @@ namespace Breakout_Game
         public GameClient()
         {
             InitializeComponent();
-            lblGamePaused.Text = string.Empty;
-            lblPressEnter.Text = string.Empty;
-            /*
-            MessageBox.Show("Welcome to Breakout!\nBefore we begin, here are the controls:\n\nPress left or right arrow to move the paddle.\n\nPress Escape to pause the game.\n\nPress Enter/Return to resume the game.");
-            MessageBox.Show("For a the rules of the game and more, please refer to the ''Help'' tab on the top left.");
-            MessageBox.Show("After closing this box, please press Enter/Return to begin.");
-             */
+            lblGamePaused.Text = String.Empty;
+            lblPressEnter.Text = String.Empty;
         }
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
             //this event will run when enabled and for each time intveral set in properties
 
+            //clearing lables
             lblGamePaused.Text = string.Empty;
             lblPressEnter.Text = string.Empty;
+            lblWelcome.Text = string.Empty;
+            lblBegin.Text = string.Empty;
+            lblForHelp.Text = string.Empty;
 
             //Move player
             if (Player == PlayerState.Left)
@@ -60,12 +59,7 @@ namespace Breakout_Game
             else if (Player == PlayerState.Right)
             {
                 picPlayer.Left += 10;
-            }
-
-            else
-            {
-
-            }   
+            }  
 
             //draw ball
             Position += Velocity;
@@ -141,7 +135,7 @@ namespace Breakout_Game
             //if space key is pressed, start the game.
             if (e.KeyCode == Keys.Space)
             {
-                //Start//reset the game
+                //Start the game;
                 Reset();
                 tmrGame.Enabled = true;
             }
@@ -183,6 +177,27 @@ namespace Breakout_Game
                     Player = PlayerState.Right;
                 }
             }
+
+            //check if equals button is pressed
+            if(e.KeyCode == Keys.Oemplus)
+            {
+                tmrGame.Enabled = false;
+                MessageBox.Show("Welcome to Breakout!\nThe rules of the game are simple:\n\nYou are the paddle on the bottom of the screen." +
+               " With the ball as your only weapon, you are to destroy all bricks within the level.");
+
+                MessageBox.Show("These bricks come in different types.\n\nGreen bricks take one (1) hit to destroy." +
+                    "\n\nOrange bricks take two (2) hits to destroy.\n\nRed bricks take three (3) hits to destroy." +
+                    "\n\nYou must destoy all of the bricks to advance to the next level.");
+
+                MessageBox.Show("The ball bounces off of everything - you, the bricks, and the edges of the level." +
+                    "\nAnd whenever it does so, it picks up speed.\n\nHowever, if the ball hits the bottom of the level, you lose a life." +
+                    "\nWatch out, you only have 3 lives!\nRemaining lives are labeled at the top right of the screen at all times.");
+
+                MessageBox.Show("Press left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
+                    "\nPress Enter/Return to resume the game.");
+
+                lblPressEnter.Text = "Press ENTER to continue.";
+            }
         }
 
         private void GameClient_KeyUp(object sender, KeyEventArgs e)
@@ -195,21 +210,74 @@ namespace Breakout_Game
             }
         }
 
-        private void mnuClose_Click(object sender, EventArgs e)
+        private void mnuRestart_Click(object sender, EventArgs e)
         {
+            //Restart the game and all values
 
+            //reset the ball
+            Reset();
+            Velocity.X = 0;
+            Velocity.Y = 0;
+
+            //draw ball
+            Position += Velocity;
+            picBall.Left = (int)Position.X;
+            picBall.Top = (int)Position.Y;
+
+            //reset the player
+            PlayerLives = 3;
+            Player = PlayerState.None;
+            picPlayer.Left = 368;
+            tmrGame.Enabled = false;
+
+            //reset the labels
+            lblLives.Text = "Lives Left: " + PlayerLives;
+            lblWelcome.Text = "Welcome!";
+            lblBegin.Text = "Please press the SPACEBAR to play.";
+            lblForHelp.Text = "For controls and rules of the game,\n               press ''='' at any time.";
+            lblGamePaused.Text = String.Empty;
+            lblPressEnter.Text = String.Empty;
         }
 
-        private void GameClient_Load(object sender, EventArgs e)
+        private void mnuClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void mnuLevels_Click(object sender, EventArgs e)
         {
 
         }
 
         private void mnuTutorial_Click(object sender, EventArgs e)
         {
-
+           
         }
 
+        private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //game controls
+            MessageBox.Show("Press left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
+                "\nPress Enter/Return to resume the game.");
+        }
+
+        private void rulesOfTheGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //game rules
+            MessageBox.Show("You are the paddle on the bottom of the screen. Use the ball to destroy all of the bricks.");
+
+            MessageBox.Show("Green bricks take one (1) hit to destroy.\n\nOrange bricks take two (2) hits to destroy." +
+                "\n\nRed bricks take three (3) hits to destroy.\n\nYou must destoy all of the bricks to advance to the next level.");
+
+            MessageBox.Show("The ball bounces off of everything except the bottom of the level, and picks up speed as it does so." +
+                "\nIf the ball reaches the bottom of the level, you lose a life.\nWatch out, you only have 3 lives!" +
+                "\nRemaining lives are labeled at the top right of the screen at all times.");
+        }
+
+        private void GameClient_Load(object sender, EventArgs e)
+        {
+
+        }
 
         //Methods for the ball
 

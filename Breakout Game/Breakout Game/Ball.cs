@@ -26,7 +26,7 @@ namespace Breakout_Game
         public Ball()
         {
             this.mDimensions = 25;
-            this.mPosition = ;
+          //  this.mPosition = ;
         }
         public Ball(int Dimensions, Vector2 Position, Vector2 Velocity)
         {

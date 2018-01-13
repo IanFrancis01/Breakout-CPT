@@ -35,7 +35,6 @@
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.mnuMenu = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPause = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRestart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLevels = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +46,11 @@
             this.lblLives = new System.Windows.Forms.Label();
             this.lblPressEnter = new System.Windows.Forms.Label();
             this.lblGamePaused = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
+            this.lblBegin = new System.Windows.Forms.Label();
+            this.lblForHelp = new System.Windows.Forms.Label();
+            this.controlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rulesOfTheGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).BeginInit();
             this.mnuMenu.SuspendLayout();
@@ -91,7 +95,6 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuPause,
             this.mnuRestart,
             this.mnuLevels,
             this.mnuClose});
@@ -99,17 +102,12 @@
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "File";
             // 
-            // mnuPause
-            // 
-            this.mnuPause.Name = "mnuPause";
-            this.mnuPause.Size = new System.Drawing.Size(112, 22);
-            this.mnuPause.Text = "Pause";
-            // 
             // mnuRestart
             // 
             this.mnuRestart.Name = "mnuRestart";
-            this.mnuRestart.Size = new System.Drawing.Size(112, 22);
+            this.mnuRestart.Size = new System.Drawing.Size(152, 22);
             this.mnuRestart.Text = "Restart";
+            this.mnuRestart.Click += new System.EventHandler(this.mnuRestart_Click);
             // 
             // mnuLevels
             // 
@@ -117,26 +115,27 @@
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.mnuLevels.Name = "mnuLevels";
-            this.mnuLevels.Size = new System.Drawing.Size(112, 22);
-            this.mnuLevels.Text = "Levels";
+            this.mnuLevels.Size = new System.Drawing.Size(152, 22);
+            this.mnuLevels.Text = "Levels...";
+            this.mnuLevels.Click += new System.EventHandler(this.mnuLevels_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem2.Text = "1";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Text = "2";
             // 
             // mnuClose
             // 
             this.mnuClose.Name = "mnuClose";
-            this.mnuClose.Size = new System.Drawing.Size(112, 22);
-            this.mnuClose.Text = "Close...";
+            this.mnuClose.Size = new System.Drawing.Size(152, 22);
+            this.mnuClose.Text = "Quit";
             this.mnuClose.Click += new System.EventHandler(this.mnuClose_Click);
             // 
             // mnuHelp
@@ -149,9 +148,12 @@
             // 
             // mnuTutorial
             // 
+            this.mnuTutorial.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controlsToolStripMenuItem,
+            this.rulesOfTheGameToolStripMenuItem});
             this.mnuTutorial.Name = "mnuTutorial";
-            this.mnuTutorial.Size = new System.Drawing.Size(115, 22);
-            this.mnuTutorial.Text = "Tutorial";
+            this.mnuTutorial.Size = new System.Drawing.Size(152, 22);
+            this.mnuTutorial.Text = "Tutorial...";
             this.mnuTutorial.Click += new System.EventHandler(this.mnuTutorial_Click);
             // 
             // pictureBox1
@@ -201,6 +203,55 @@
             this.lblGamePaused.TabIndex = 6;
             this.lblGamePaused.Text = "Game Paused";
             // 
+            // lblWelcome
+            // 
+            this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
+            this.lblWelcome.Font = new System.Drawing.Font("Rockwell", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.ForeColor = System.Drawing.Color.White;
+            this.lblWelcome.Location = new System.Drawing.Point(320, 37);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(200, 48);
+            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Text = "Welcome!";
+            // 
+            // lblBegin
+            // 
+            this.lblBegin.AutoSize = true;
+            this.lblBegin.BackColor = System.Drawing.Color.Transparent;
+            this.lblBegin.Font = new System.Drawing.Font("Rockwell", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBegin.ForeColor = System.Drawing.Color.White;
+            this.lblBegin.Location = new System.Drawing.Point(103, 85);
+            this.lblBegin.Name = "lblBegin";
+            this.lblBegin.Size = new System.Drawing.Size(626, 42);
+            this.lblBegin.TabIndex = 7;
+            this.lblBegin.Text = "Please press the SPACEBAR to play.";
+            // 
+            // lblForHelp
+            // 
+            this.lblForHelp.AutoSize = true;
+            this.lblForHelp.BackColor = System.Drawing.Color.Transparent;
+            this.lblForHelp.Font = new System.Drawing.Font("Rockwell", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForHelp.ForeColor = System.Drawing.Color.Lime;
+            this.lblForHelp.Location = new System.Drawing.Point(141, 137);
+            this.lblForHelp.Name = "lblForHelp";
+            this.lblForHelp.Size = new System.Drawing.Size(579, 78);
+            this.lblForHelp.TabIndex = 8;
+            this.lblForHelp.Text = "For controls and rules of the game,\r\n              press \"=\" at any time.";
+            // 
+            // controlsToolStripMenuItem
+            // 
+            this.controlsToolStripMenuItem.Name = "controlsToolStripMenuItem";
+            this.controlsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.controlsToolStripMenuItem.Text = "Controls";
+            this.controlsToolStripMenuItem.Click += new System.EventHandler(this.controlsToolStripMenuItem_Click);
+            // 
+            // rulesOfTheGameToolStripMenuItem
+            // 
+            this.rulesOfTheGameToolStripMenuItem.Name = "rulesOfTheGameToolStripMenuItem";
+            this.rulesOfTheGameToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.rulesOfTheGameToolStripMenuItem.Text = "Rules of the game";
+            this.rulesOfTheGameToolStripMenuItem.Click += new System.EventHandler(this.rulesOfTheGameToolStripMenuItem_Click);
+            // 
             // GameClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +260,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(836, 580);
+            this.Controls.Add(this.lblForHelp);
+            this.Controls.Add(this.lblBegin);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.lblGamePaused);
             this.Controls.Add(this.lblPressEnter);
             this.Controls.Add(this.pictureBox1);
@@ -241,7 +295,6 @@
         private System.Windows.Forms.Timer tmrGame;
         private System.Windows.Forms.MenuStrip mnuMenu;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
-        private System.Windows.Forms.ToolStripMenuItem mnuPause;
         private System.Windows.Forms.ToolStripMenuItem mnuRestart;
         private System.Windows.Forms.ToolStripMenuItem mnuClose;
         private System.Windows.Forms.ToolStripMenuItem mnuLevels;
@@ -253,6 +306,11 @@
         private System.Windows.Forms.Label lblLives;
         private System.Windows.Forms.Label lblPressEnter;
         private System.Windows.Forms.Label lblGamePaused;
+        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Label lblBegin;
+        private System.Windows.Forms.Label lblForHelp;
+        private System.Windows.Forms.ToolStripMenuItem controlsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rulesOfTheGameToolStripMenuItem;
     }
 }
 
