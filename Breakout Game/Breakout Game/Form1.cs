@@ -268,13 +268,24 @@ namespace Breakout_Game
         private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Game controls
+            tmrGame.Enabled = false;
             MessageBox.Show("Press the left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
                 "\nPress Enter to resume the game.\n\nYou can also press Equals (=) to bring up the rules and controls.");
+
+            if (startofgame == true)
+            {
+                lblPressEnter.Text = "Press SPACEBAR to begin.";
+            }
+            else
+            {
+                lblPressEnter.Text = "Press ENTER to continue.";
+            }
         }
 
         private void rulesOfTheGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Game rules
+            tmrGame.Enabled = false;
             MessageBox.Show("You are the paddle on the bottom of the screen. Use the ball to destroy all of the bricks.");
 
             MessageBox.Show("Green bricks take one (1) hit to destroy.\n\nOrange bricks take two (2) hits to destroy." +
@@ -283,6 +294,15 @@ namespace Breakout_Game
             MessageBox.Show("The ball bounces off of everything except the bottom of the level, and picks up speed as it does so." +
                 "\nIf the ball reaches the bottom of the level, you lose a life.\nWatch out, you only have 3 lives!" +
                 "\nRemaining lives are labeled at the top right of the screen at all times.");
+
+            if (startofgame == true)
+            {
+                lblPressEnter.Text = "Press SPACEBAR to begin.";
+            }
+            else
+            {
+                lblPressEnter.Text = "Press ENTER to continue.";
+            }
         }
 
         private void mnuLevels_Click(object sender, EventArgs e)
