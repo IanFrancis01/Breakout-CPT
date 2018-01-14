@@ -11,3 +11,12 @@ C:\Users\ianmf_000\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Br
 C:\Users\Divine\Source\Repos\Breakout-CPT\Breakout Game\Breakout Game\bin\Debug\Breakout Game.exe.config
 C:\Users\Divine\Source\Repos\Breakout-CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.exe
 C:\Users\Divine\Source\Repos\Breakout-CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.pdb
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Breakout Game.exe.config
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.exe
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.pdb
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Breakout Game.exe
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Breakout Game.pdb
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.csprojResolveAssemblyReference.cache
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout_Game.GameClient.resources
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout_Game.Properties.Resources.resources
+C:\Users\Divine\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.csproj.GenerateResource.Cache
