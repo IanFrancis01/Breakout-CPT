@@ -24,13 +24,15 @@ namespace Breakout_Game
 
     public partial class GameClient : Form
     {
+        ///////////////////////////////////////////////////
+        ////////////////GLOBAL VARIABLES//////////////////
+        /////////////////////////////////////////////////
 
-        //global variables
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
         bool CanSpace = true;
 
-        //ball variables
+        //Ball variables
         //Ball GameBall = new Ball(picBall);
         float Speed; //speed of ball
         Vector2 Position, Velocity; //position and velocity of the ball
@@ -43,11 +45,15 @@ namespace Breakout_Game
             lblPressEnter.Text = String.Empty;
         }
 
+        ///////////////////////////////////////////////////
+        //////////////////UNPAUSED GAME///////////////////
+        /////////////////////////////////////////////////
+
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            //this event will run when enabled and for each time intveral set in properties
+            //This event will run when enabled and for each time intveral set in properties
 
-            //clearing lables
+            //Clearing lables
             lblGamePaused.Text = string.Empty;
             lblPressEnter.Text = string.Empty;
             lblWelcome.Text = string.Empty;
@@ -65,55 +71,50 @@ namespace Breakout_Game
                 picPlayer.Left += 10;
             }
 
-            //draw ball
-            
+            //Draw ball
             Position += Velocity;
             picBall.Left = (int)Position.X;
             picBall.Top = (int)Position.Y;
 
 
-            //detect collision between ball and paddle
+            //Detect collision between ball and paddle
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
                 Collision();
             }
 
-            //detect collision between ball and brick
+            //Detect collision between ball and brick
 
-
-            //Change direction of the ball
-
-            //ball hits the top of the client
+            //Ball hits the top of the client
             if (picBall.Top <= 0)
             {
                 Velocity.Y *= -1;
             }
 
-            //ball hits the left or right side of the client
+            //Ball hits the left or right side of the client
             if (picBall.Left <= 0 || picBall.Right >= ClientSize.Width)
             {
                 Velocity.X *= -1;
             }
 
-            //losing a life
+            //Losing a life
             if(picBall.Top >= ClientSize.Height)
             {
-                //deducting a life and displaying it
-                PlayerLives -= 1;
-                lblLives.Text = "Lives left: " + PlayerLives;
-                
                 //resetting the ball's location
                 Reset();
                 Velocity.X = 0;
                 Velocity.Y = 0;
 
+                //deducting a life and displaying it
+                PlayerLives -= 1;
+                lblLives.Text = "Lives left: " + PlayerLives;
                 CanSpace = true;
             }
 
-            //check if out of lives
+            //Check if out of lives
             if(PlayerLives <= 0)
             {
-                //Restart the game and all values
+                //reset the game and all values
 
                 //reset the ball
                 Reset();
@@ -135,11 +136,15 @@ namespace Breakout_Game
             }
         }
 
+        ///////////////////////////////////////////////////
+        ///////////////////KEY DOWN/UP////////////////////
+        /////////////////////////////////////////////////
+
         private void GameClient_KeyDown(object sender, KeyEventArgs e)
         {
-            //this event will run when a key is pressed.
+            //This event will run when a key is pressed.
 
-            //if return is pressed, enable the timer, unpausing the game
+            //If return is pressed, enable the timer, unpausing the game
             if (e.KeyCode == Keys.Return)
             {
                 if (tmrGame.Enabled == false)
@@ -148,7 +153,7 @@ namespace Breakout_Game
                 }
             }
 
-            //if space key is pressed, start the game.
+            //If space key is pressed, start the game.
             if (e.KeyCode == Keys.Space)
             {
                 if (CanSpace == true)
@@ -159,7 +164,7 @@ namespace Breakout_Game
                 }
             }
 
-            //if escape key is pressed, disable the timer, pausing the game.
+            //If escape key is pressed, disable the timer, pausing the game.
             if (e.KeyCode == Keys.Escape)
             {
                 tmrGame.Enabled = false;
@@ -167,7 +172,7 @@ namespace Breakout_Game
                 lblPressEnter.Text = "Press ENTER to continue.";
             }
 
-            //check if left is pressed
+            //Check if left is pressed
             if (e.KeyCode == Keys.Left)
             {
                 if (picPlayer.Left - 10 <= 0)
@@ -182,7 +187,7 @@ namespace Breakout_Game
                 }
             }
 
-            //check if right is pressed
+            //Check if right is pressed
             if (e.KeyCode == Keys.Right)
             {
                 if (picPlayer.Left + 110 >= ClientSize.Width)
@@ -197,7 +202,13 @@ namespace Breakout_Game
                 }
             }
 
-            //check if equals button is pressed
+            //Check if F1 key is pressed
+            if(e.KeyCode == Keys.F1)
+            {
+                ResetGame();
+            }
+
+            //Check if equals button is pressed
             if(e.KeyCode == Keys.Oemplus)
             {
                 tmrGame.Enabled = false;
@@ -213,7 +224,7 @@ namespace Breakout_Game
                     "\nWatch out, you only have 3 lives!\nRemaining lives are labeled at the top right of the screen at all times.");
 
                 MessageBox.Show("Press the left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
-                    "\nPress Enter/Return to resume the game.");
+                "\nPress Enter to resume the game.\n\nYou can also press Equals (=) to bring up the rules and controls.");
 
                 lblPressEnter.Text = "Press ENTER to continue.";
             }
@@ -229,61 +240,32 @@ namespace Breakout_Game
             }
         }
 
+        ///////////////////////////////////////////////////
+        ///////////////////MENU BUTONS////////////////////
+        /////////////////////////////////////////////////
+
         private void mnuRestart_Click(object sender, EventArgs e)
         {
             //Restart the game and all values
-
-            //reset the ball
-            Reset();
-            Velocity.X = 0;
-            Velocity.Y = 0;
-
-            //draw ball
-            Position += Velocity;
-            picBall.Left = (int)Position.X;
-            picBall.Top = (int)Position.Y;
-
-            //reset the player
-            PlayerLives = 3;
-            Player = PlayerState.None;
-            picPlayer.Left = 368;
-            tmrGame.Enabled = false;
-            CanSpace = true;
-
-            //reset the labels
-            lblLives.Text = "Lives Left: " + PlayerLives;
-            lblWelcome.Text = "Welcome!";
-            lblBegin.Text = "Please press the SPACEBAR to play.";
-            lblForHelp.Text = "For controls and rules of the game,\n              press ''='' at any time.";
-            lblGamePaused.Text = String.Empty;
-            lblPressEnter.Text = String.Empty;
+            ResetGame();
         }
 
         private void mnuClose_Click(object sender, EventArgs e)
         {
+            //Exit the game
             Application.Exit();
-        }
-
-        private void mnuLevels_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mnuTutorial_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //game controls
+            //Game controls
             MessageBox.Show("Press the left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
-                "\nPress Enter/Return to resume the game.");
+                "\nPress Enter to resume the game.\n\nYou can also press Equals (=) to bring up the rules and controls.");
         }
 
         private void rulesOfTheGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //game rules
+            //Game rules
             MessageBox.Show("You are the paddle on the bottom of the screen. Use the ball to destroy all of the bricks.");
 
             MessageBox.Show("Green bricks take one (1) hit to destroy.\n\nOrange bricks take two (2) hits to destroy." +
@@ -294,9 +276,52 @@ namespace Breakout_Game
                 "\nRemaining lives are labeled at the top right of the screen at all times.");
         }
 
+        private void mnuLevels_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuTutorial_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void GameClient_Load(object sender, EventArgs e)
         {
 
+        }
+
+        ///////////////////////////////////////////////////
+        /////////////////////METHODS//////////////////////
+        /////////////////////////////////////////////////
+
+        //methods for form
+        void ResetGame()
+        {
+            //Reset the ball
+            Reset();
+            Velocity.X = 0;
+            Velocity.Y = 0;
+
+            //Draw ball
+            Position += Velocity;
+            picBall.Left = (int)Position.X;
+            picBall.Top = (int)Position.Y;
+
+            //Reset the player
+            PlayerLives = 3;
+            Player = PlayerState.None;
+            picPlayer.Left = 368;
+            tmrGame.Enabled = false;
+            CanSpace = true;
+
+            //Reset the labels
+            lblLives.Text = "Lives Left: " + PlayerLives;
+            lblWelcome.Text = "Welcome!";
+            lblBegin.Text = "Please press the SPACEBAR to play.";
+            lblForHelp.Text = "For controls and rules of the game,\n              press ''='' at any time.";
+            lblGamePaused.Text = String.Empty;
+            lblPressEnter.Text = String.Empty;
         }
 
         //Methods for the ball
@@ -338,10 +363,9 @@ namespace Breakout_Game
             }
             else
             {
-                Velocity.X *= 1;
                 Velocity.Y *= -1;
             }
         }
 
-    }//end of form
+    }//End of form
 }

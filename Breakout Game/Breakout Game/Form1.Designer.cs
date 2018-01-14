@@ -39,9 +39,12 @@
             this.mnuLevels = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTutorial = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rulesOfTheGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLives = new System.Windows.Forms.Label();
             this.lblPressEnter = new System.Windows.Forms.Label();
@@ -49,9 +52,6 @@
             this.lblWelcome = new System.Windows.Forms.Label();
             this.lblBegin = new System.Windows.Forms.Label();
             this.lblForHelp = new System.Windows.Forms.Label();
-            this.controlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rulesOfTheGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBall)).BeginInit();
             this.mnuMenu.SuspendLayout();
@@ -108,7 +108,7 @@
             // 
             this.mnuRestart.Name = "mnuRestart";
             this.mnuRestart.Size = new System.Drawing.Size(152, 22);
-            this.mnuRestart.Text = "Restart";
+            this.mnuRestart.Text = "Restart (F1)";
             this.mnuRestart.Click += new System.EventHandler(this.mnuRestart_Click);
             // 
             // mnuLevels
@@ -124,14 +124,19 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 22);
             this.toolStripMenuItem2.Text = "1";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 22);
             this.toolStripMenuItem3.Text = "2";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuClose
             // 
@@ -155,8 +160,22 @@
             this.rulesOfTheGameToolStripMenuItem});
             this.mnuTutorial.Name = "mnuTutorial";
             this.mnuTutorial.Size = new System.Drawing.Size(152, 22);
-            this.mnuTutorial.Text = "Tutorial...";
+            this.mnuTutorial.Text = "Tutorial... (=)";
             this.mnuTutorial.Click += new System.EventHandler(this.mnuTutorial_Click);
+            // 
+            // controlsToolStripMenuItem
+            // 
+            this.controlsToolStripMenuItem.Name = "controlsToolStripMenuItem";
+            this.controlsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.controlsToolStripMenuItem.Text = "Controls";
+            this.controlsToolStripMenuItem.Click += new System.EventHandler(this.controlsToolStripMenuItem_Click);
+            // 
+            // rulesOfTheGameToolStripMenuItem
+            // 
+            this.rulesOfTheGameToolStripMenuItem.Name = "rulesOfTheGameToolStripMenuItem";
+            this.rulesOfTheGameToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.rulesOfTheGameToolStripMenuItem.Text = "Rules of the game";
+            this.rulesOfTheGameToolStripMenuItem.Click += new System.EventHandler(this.rulesOfTheGameToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -239,25 +258,6 @@
             this.lblForHelp.Size = new System.Drawing.Size(579, 78);
             this.lblForHelp.TabIndex = 8;
             this.lblForHelp.Text = "For controls and rules of the game,\r\n              press \"=\" at any time.";
-            // 
-            // controlsToolStripMenuItem
-            // 
-            this.controlsToolStripMenuItem.Name = "controlsToolStripMenuItem";
-            this.controlsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.controlsToolStripMenuItem.Text = "Controls";
-            this.controlsToolStripMenuItem.Click += new System.EventHandler(this.controlsToolStripMenuItem_Click);
-            // 
-            // rulesOfTheGameToolStripMenuItem
-            // 
-            this.rulesOfTheGameToolStripMenuItem.Name = "rulesOfTheGameToolStripMenuItem";
-            this.rulesOfTheGameToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.rulesOfTheGameToolStripMenuItem.Text = "Rules of the game";
-            this.rulesOfTheGameToolStripMenuItem.Click += new System.EventHandler(this.rulesOfTheGameToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // GameClient
             // 
