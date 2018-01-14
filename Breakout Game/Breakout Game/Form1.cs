@@ -31,6 +31,7 @@ namespace Breakout_Game
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
         bool CanSpace = true;
+        bool startofgame = true;
 
         //Ball variables
         //Ball GameBall = new Ball(picBall);
@@ -51,6 +52,7 @@ namespace Breakout_Game
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
+            startofgame = false;
             //This event will run when enabled and for each time intveral set in properties
 
             //Clearing lables
@@ -147,7 +149,7 @@ namespace Breakout_Game
             //If return is pressed, enable the timer, unpausing the game
             if (e.KeyCode == Keys.Return)
             {
-                if (tmrGame.Enabled == false)
+                if (tmrGame.Enabled == false && startofgame == false)
                 {
                     tmrGame.Enabled = true;
                 }
@@ -226,7 +228,14 @@ namespace Breakout_Game
                 MessageBox.Show("Press the left or right arrow to move the paddle.\n\nPress Escape to pause the game." +
                 "\nPress Enter to resume the game.\n\nYou can also press Equals (=) to bring up the rules and controls.");
 
-                lblPressEnter.Text = "Press ENTER to continue.";
+                if (startofgame == true)
+                {
+                    lblPressEnter.Text = "Press SPACEBAR to begin.";
+                }
+                else
+                {
+                    lblPressEnter.Text = "Press ENTER to continue.";
+                }
             }
         }
 
@@ -312,8 +321,6 @@ namespace Breakout_Game
             PlayerLives = 3;
             Player = PlayerState.None;
             picPlayer.Left = 368;
-            tmrGame.Enabled = false;
-            CanSpace = true;
 
             //Reset the labels
             lblLives.Text = "Lives Left: " + PlayerLives;
@@ -322,6 +329,11 @@ namespace Breakout_Game
             lblForHelp.Text = "For controls and rules of the game,\n              press ''='' at any time.";
             lblGamePaused.Text = String.Empty;
             lblPressEnter.Text = String.Empty;
+
+            //reset all booleans
+            tmrGame.Enabled = false;
+            CanSpace = true;
+            startofgame = true;
         }
 
         //Methods for the ball
