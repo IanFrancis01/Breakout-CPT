@@ -20,6 +20,8 @@ namespace Breakout_Game
         None
     }
 
+    // paddle default position picPlayer.Left = 368;
+
     public partial class GameClient : Form
     {
 
@@ -121,7 +123,6 @@ namespace Breakout_Game
                 //reset the player
                 PlayerLives = 3;
                 Player = PlayerState.None;
-                picPlayer.Left = 368;
                 lblGamePaused.Text = "GAME OVER.";
                 lblLives.Text = "Lives left: " + PlayerLives;
                 tmrGame.Enabled = false;
