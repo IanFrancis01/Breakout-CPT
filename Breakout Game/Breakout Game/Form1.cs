@@ -28,6 +28,7 @@ namespace Breakout_Game
         //global variables
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
+        bool CanSpace = true;
 
         //ball variables
         //Ball GameBall = new Ball(picBall);
@@ -105,6 +106,8 @@ namespace Breakout_Game
                 Reset();
                 Velocity.X = 0;
                 Velocity.Y = 0;
+
+                CanSpace = true;
             }
 
             //check if out of lives
@@ -128,6 +131,7 @@ namespace Breakout_Game
                 lblGamePaused.Text = "GAME OVER.";
                 lblLives.Text = "Lives left: " + PlayerLives;
                 tmrGame.Enabled = false;
+                CanSpace = true;
             }
         }
 
@@ -147,8 +151,12 @@ namespace Breakout_Game
             //if space key is pressed, start the game.
             if (e.KeyCode == Keys.Space)
             {
+                if (CanSpace == true)
+                {
                     Reset();
                     tmrGame.Enabled = true;
+                    CanSpace = false;
+                }
             }
 
             //if escape key is pressed, disable the timer, pausing the game.
@@ -240,6 +248,7 @@ namespace Breakout_Game
             Player = PlayerState.None;
             picPlayer.Left = 368;
             tmrGame.Enabled = false;
+            CanSpace = true;
 
             //reset the labels
             lblLives.Text = "Lives Left: " + PlayerLives;
