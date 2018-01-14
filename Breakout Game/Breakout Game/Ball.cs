@@ -12,12 +12,6 @@ namespace Breakout_Game
     public partial class Ball : Form
     {
 
-        //how much of the code for the ball can we put in a ball class?
-        //float speed -
-        //vector2 position
-        //vector2 velocity
-        //collision
-
         //private fields // members //
         // speed of ball
         float Speed = 6;
@@ -38,23 +32,13 @@ namespace Breakout_Game
             picBall.Top = (int)Position.Y;
         }
 
-        public Ball(PictureBox picBall, int DimensionsX, int DimensionsY, Vector2 Position, Vector2 Velocity, float Angle)
+        public Ball(PictureBox Userpicball)
         {
-            this.mDimensionsX = DimensionsX;
-            this.mDimensionsY = DimensionsY;
-            this.mPosition = Position;
-            this.mVelocity = Velocity;
-            this.mAngle = Angle;
-
-
-            Position = new Vector2((ClientSize.Width - picBall.Width) / 2, (ClientSize.Height - (picBall.Height * 4)));
-            Angle = FindRandomAngle();
-            Velocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
-
+            picBall = Userpicball;
         }
 
         // methods//
-        public static float FindRandomAngle()
+        private static float FindRandomAngle()
         {
             Random RandomAngle = new Random();
 
@@ -74,7 +58,25 @@ namespace Breakout_Game
             Speed = 6;
             Position = new Vector2((ClientSize.Width - picBall.Width) / 2, (ClientSize.Height - (picBall.Height * 4)));
             float Angle = FindRandomAngle();
-            Velocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
+           mVelocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
+        }
+
+        //Method for collisions        
+        public void Collision()
+        {
+            //max speed is 11
+            if (Speed < 15)
+            {
+                mVelocity.X *= 1.1f;
+                mVelocity.Y *= -1.1f;
+
+                Speed = (float)mVelocity.Length();
+            }
+            else
+            {
+                mVelocity.X *= 1;
+                mVelocity.Y *= -1;
+            }
         }
 
 

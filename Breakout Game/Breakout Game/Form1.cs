@@ -30,6 +30,7 @@ namespace Breakout_Game
         int PlayerLives = 3;
 
         //ball variables
+        //Ball GameBall = new Ball(picBall);
         float Speed; //speed of ball
         Vector2 Position, Velocity; //position and velocity of the ball
 
@@ -64,6 +65,7 @@ namespace Breakout_Game
             }
 
             //draw ball
+            
             Position += Velocity;
             picBall.Left = (int)Position.X;
             picBall.Top = (int)Position.Y;
