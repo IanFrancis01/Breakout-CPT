@@ -26,7 +26,6 @@ namespace Breakout_Game
         //global variables
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
-        bool CanStart = true;
 
         //ball variables
         float Speed; //speed of ball
@@ -50,10 +49,6 @@ namespace Breakout_Game
             lblWelcome.Text = string.Empty;
             lblBegin.Text = string.Empty;
             lblForHelp.Text = string.Empty;
-
-
-            //game has now started
-            CanStart = false; 
 
             //Move player
             if (Player == PlayerState.Left)
@@ -106,25 +101,30 @@ namespace Breakout_Game
                 Reset();
                 Velocity.X = 0;
                 Velocity.Y = 0;
-
-                CanStart = true;
             }
 
             //check if out of lives
             if(PlayerLives <= 0)
             {
-                //resetting the ball's location
+                //Restart the game and all values
+
+                //reset the ball
                 Reset();
                 Velocity.X = 0;
                 Velocity.Y = 0;
 
-                //reset player
+                //draw ball
+                Position += Velocity;
+                picBall.Left = (int)Position.X;
+                picBall.Top = (int)Position.Y;
+
+                //reset the player
                 PlayerLives = 3;
                 Player = PlayerState.None;
-                MessageBox.Show("GAME OVER.");
+                picPlayer.Left = 368;
+                lblGamePaused.Text = "GAME OVER.";
                 lblLives.Text = "Lives left: " + PlayerLives;
-                CanStart = true;
-
+                tmrGame.Enabled = false;
             }
         }
 
@@ -144,12 +144,8 @@ namespace Breakout_Game
             //if space key is pressed, start the game.
             if (e.KeyCode == Keys.Space)
             {
-                if (CanStart == true)
-                {
-                    //Start the game;
                     Reset();
                     tmrGame.Enabled = true;
-                }
             }
 
             //if escape key is pressed, disable the timer, pausing the game.
@@ -249,9 +245,6 @@ namespace Breakout_Game
             lblForHelp.Text = "For controls and rules of the game,\n              press ''='' at any time.";
             lblGamePaused.Text = String.Empty;
             lblPressEnter.Text = String.Empty;
-
-            //game has not begun
-            CanStart = true;
         }
 
         private void mnuClose_Click(object sender, EventArgs e)
