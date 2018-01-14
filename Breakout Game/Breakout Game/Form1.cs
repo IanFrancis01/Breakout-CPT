@@ -30,7 +30,10 @@ namespace Breakout_Game
 
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
+        //prevents user from being able to hit space during game
         bool CanSpace = true;
+
+        //prevents user from being able hit enter during game
         bool startofgame = true;
 
         //Ball variables
@@ -52,7 +55,15 @@ namespace Breakout_Game
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            startofgame = false;
+            if(startofgame == true)
+            {
+                picPlayer.Left = 368;
+                startofgame = false;
+            }
+            else
+            {
+                startofgame = false;
+            }
             //This event will run when enabled and for each time intveral set in properties
 
             //Clearing lables
@@ -131,9 +142,13 @@ namespace Breakout_Game
                 //reset the player
                 PlayerLives = 3;
                 Player = PlayerState.None;
+
+                //reset labels and other
                 lblGamePaused.Text = "GAME OVER.";
+                lblPressEnter.Text = "Press SPACEBAR to start over.";
                 lblLives.Text = "Lives left: " + PlayerLives;
                 tmrGame.Enabled = false;
+                startofgame = true;
                 CanSpace = true;
             }
         }
