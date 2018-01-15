@@ -25,16 +25,17 @@ namespace Breakout_Game
 
         //constructors//
 
+        public Ball(PictureBox Userpicball)
+        {
+            picBall = Userpicball;
+        }
+
+
         public void MoveBall()
         {
             Position += mVelocity;
             picBall.Left = (int)Position.X;
             picBall.Top = (int)Position.Y;
-        }
-
-        public Ball(PictureBox Userpicball)
-        {
-            picBall = Userpicball;
         }
 
         // methods//

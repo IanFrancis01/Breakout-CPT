@@ -62,9 +62,9 @@
             // 
             this.picPlayer.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.picPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picPlayer.Location = new System.Drawing.Point(368, 522);
+            this.picPlayer.Location = new System.Drawing.Point(368, 533);
             this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(100, 20);
+            this.picPlayer.Size = new System.Drawing.Size(100, 10);
             this.picPlayer.TabIndex = 0;
             this.picPlayer.TabStop = false;
             // 
@@ -73,7 +73,7 @@
             this.picBall.BackColor = System.Drawing.SystemColors.Window;
             this.picBall.Location = new System.Drawing.Point(405, 480);
             this.picBall.Name = "picBall";
-            this.picBall.Size = new System.Drawing.Size(25, 25);
+            this.picBall.Size = new System.Drawing.Size(20, 20);
             this.picBall.TabIndex = 1;
             this.picBall.TabStop = false;
             // 
@@ -107,7 +107,7 @@
             // mnuRestart
             // 
             this.mnuRestart.Name = "mnuRestart";
-            this.mnuRestart.Size = new System.Drawing.Size(152, 22);
+            this.mnuRestart.Size = new System.Drawing.Size(133, 22);
             this.mnuRestart.Text = "Restart (F1)";
             this.mnuRestart.Click += new System.EventHandler(this.mnuRestart_Click);
             // 
@@ -117,7 +117,7 @@
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.mnuLevels.Name = "mnuLevels";
-            this.mnuLevels.Size = new System.Drawing.Size(152, 22);
+            this.mnuLevels.Size = new System.Drawing.Size(133, 22);
             this.mnuLevels.Text = "Levels...";
             this.mnuLevels.Click += new System.EventHandler(this.mnuLevels_Click);
             // 
@@ -136,12 +136,12 @@
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(130, 6);
             // 
             // mnuClose
             // 
             this.mnuClose.Name = "mnuClose";
-            this.mnuClose.Size = new System.Drawing.Size(152, 22);
+            this.mnuClose.Size = new System.Drawing.Size(133, 22);
             this.mnuClose.Text = "Quit";
             this.mnuClose.Click += new System.EventHandler(this.mnuClose_Click);
             // 
@@ -159,7 +159,7 @@
             this.controlsToolStripMenuItem,
             this.rulesOfTheGameToolStripMenuItem});
             this.mnuTutorial.Name = "mnuTutorial";
-            this.mnuTutorial.Size = new System.Drawing.Size(152, 22);
+            this.mnuTutorial.Size = new System.Drawing.Size(143, 22);
             this.mnuTutorial.Text = "Tutorial... (=)";
             this.mnuTutorial.Click += new System.EventHandler(this.mnuTutorial_Click);
             // 
