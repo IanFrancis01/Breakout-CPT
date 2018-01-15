@@ -186,7 +186,15 @@ namespace Breakout_Game
             {
                 tmrGame.Enabled = false;
                 lblGamePaused.Text = "Game Paused";
-                lblPressEnter.Text = "Press ENTER to continue.";
+
+                if (startofgame == true)
+                {
+                    lblPressEnter.Text = "Press SPACEBAR to begin.";
+                }
+                else
+                {
+                    lblPressEnter.Text = "Press ENTER to continue.";
+                }
             }
 
             //Check if left is pressed
