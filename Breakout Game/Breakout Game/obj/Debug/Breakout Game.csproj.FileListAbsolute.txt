@@ -31,3 +31,14 @@ C:\Users\073484081\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Br
 C:\Users\073484081\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Breakout_Game.GameClient.resources
 C:\Users\073484081\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Breakout_Game.Properties.Resources.resources
 C:\Users\073484081\Desktop\Breakout CPT\Breakout Game\Breakout Game\obj\Debug\Breakout Game.csproj.GenerateResource.Cache
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Breakout Game.exe.config
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.exe
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.pdb
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Breakout Game.exe
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Breakout Game.pdb
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\bin\Debug\Microsoft.Xna.Framework.xml
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.csprojResolveAssemblyReference.cache
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout_Game.GameClient.resources
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout_Game.Properties.Resources.resources
+C:\Users\352816490\Source\Repos\Breakout-CPT2\Breakout Game\Breakout Game\obj\Debug\Breakout Game.csproj.GenerateResource.Cache
