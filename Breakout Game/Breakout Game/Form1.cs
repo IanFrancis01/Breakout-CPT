@@ -79,11 +79,11 @@ namespace Breakout_Game
             //This event will run when enabled and for each time intveral set in properties
 
             //Clearing lables
-            lblGamePaused.Text = string.Empty;
-            lblPressEnter.Text = string.Empty;
-            lblWelcome.Text = string.Empty;
-            lblBegin.Text = string.Empty;
-            lblForHelp.Text = string.Empty;
+            lblGamePaused.Text = String.Empty;
+            lblPressEnter.Text = String.Empty;
+            lblWelcome.Text = String.Empty;
+            lblBegin.Text = String.Empty;
+            lblForHelp.Text = String.Empty;
 
             //Move player
             if (Player == PlayerState.Left)
