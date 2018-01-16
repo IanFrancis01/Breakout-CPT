@@ -64,14 +64,14 @@
             this.picPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picPlayer.Location = new System.Drawing.Point(368, 533);
             this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(100, 10);
+            this.picPlayer.Size = new System.Drawing.Size(100, 20);
             this.picPlayer.TabIndex = 0;
             this.picPlayer.TabStop = false;
             // 
             // picBall
             // 
             this.picBall.BackColor = System.Drawing.SystemColors.Window;
-            this.picBall.Location = new System.Drawing.Point(405, 480);
+            this.picBall.Location = new System.Drawing.Point(408, 494);
             this.picBall.Name = "picBall";
             this.picBall.Size = new System.Drawing.Size(20, 20);
             this.picBall.TabIndex = 1;

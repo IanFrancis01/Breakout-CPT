@@ -121,6 +121,7 @@ namespace Breakout_Game
             //Detect collision between ball and paddle
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
+                    picBall.Top = picPlayer.Top - 1;
                     Collision();
             }
 
