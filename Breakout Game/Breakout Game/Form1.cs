@@ -24,9 +24,15 @@ namespace Breakout_Game
 
     public partial class GameClient : Form
     {
+        
+        
+        
         ///////////////////////////////////////////////////
         ////////////////GLOBAL VARIABLES//////////////////
         /////////////////////////////////////////////////
+
+
+
 
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
@@ -49,9 +55,15 @@ namespace Breakout_Game
             lblPressEnter.Text = String.Empty;
         }
 
+
+
+
         ///////////////////////////////////////////////////
         //////////////////UNPAUSED GAME///////////////////
         /////////////////////////////////////////////////
+
+
+
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
@@ -76,12 +88,28 @@ namespace Breakout_Game
             //Move player
             if (Player == PlayerState.Left)
             {
-                picPlayer.Left -= 10;
+                if (picPlayer.Left - 10 <= 0)
+                {
+                    //at edge of screen
+                    Player = PlayerState.None;
+                }
+                else
+                {
+                    picPlayer.Left -= 10;
+                }
             }
 
             else if (Player == PlayerState.Right)
             {
-                picPlayer.Left += 10;
+                if (picPlayer.Right + 10 >= ClientSize.Width)
+                {
+                    //at edge of screen
+                    Player = PlayerState.None;
+                }
+                else
+                {
+                    picPlayer.Left += 10;
+                }
             }
 
             //Draw ball
@@ -153,9 +181,14 @@ namespace Breakout_Game
             }
         }
 
+
+
         ///////////////////////////////////////////////////
         ///////////////////KEY DOWN/UP////////////////////
         /////////////////////////////////////////////////
+
+
+
 
         private void GameClient_KeyDown(object sender, KeyEventArgs e)
         {
@@ -200,13 +233,6 @@ namespace Breakout_Game
             //Check if left is pressed
             if (e.KeyCode == Keys.Left)
             {
-                if (picPlayer.Left - 10 <= 0)
-                {
-                    //at edge of screen
-                    picPlayer.Left = 1;
-                    Player = PlayerState.None;
-                }
-                else
                 {
                     Player = PlayerState.Left;
                 }
@@ -215,16 +241,7 @@ namespace Breakout_Game
             //Check if right is pressed
             if (e.KeyCode == Keys.Right)
             {
-                if (picPlayer.Left + 110 >= ClientSize.Width)
-                {
-                    //at edge of screen
-                    picPlayer.Left = ClientSize.Width - 100;
-                    Player = PlayerState.None;
-                }
-                else
-                {
                     Player = PlayerState.Right;
-                }
             }
 
             //Check if F1 key is pressed
@@ -272,9 +289,15 @@ namespace Breakout_Game
             }
         }
 
+
+
+
         ///////////////////////////////////////////////////
         ///////////////////MENU BUTONS////////////////////
         /////////////////////////////////////////////////
+
+
+
 
         private void mnuRestart_Click(object sender, EventArgs e)
         {
@@ -343,9 +366,15 @@ namespace Breakout_Game
 
         }
 
+        
+        
+        
         ///////////////////////////////////////////////////
         /////////////////////METHODS//////////////////////
         /////////////////////////////////////////////////
+
+
+
 
         //methods for form
         void ResetGame()
