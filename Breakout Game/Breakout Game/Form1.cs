@@ -36,6 +36,7 @@ namespace Breakout_Game
 
         PlayerState Player = PlayerState.None;
         int PlayerLives = 3;
+        int score = 0;
         //prevents user from being able to hit space during game
         bool CanSpace = true;
 
@@ -126,7 +127,19 @@ namespace Breakout_Game
             }
 
             //Detect collision between ball and brick
+            foreach (Control x in this.Controls)
+            {
+                if (x is PictureBox && x.Tag == "block")
+                {
+                    if (picBall.Bounds.IntersectsWith(x.Bounds))
+                    {
+                        this.Controls.Remove(x);
+                        Collision();
+                        score++;
+                    }
 
+                }
+            }
             //Ball hits the top of the client
             if (picBall.Top <= 0)
             {
