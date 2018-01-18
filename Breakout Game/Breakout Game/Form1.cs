@@ -121,8 +121,8 @@ namespace Breakout_Game
             //Detect collision between ball and paddle
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
-                    picBall.Top = picPlayer.Top - 1;
-                    Collision();
+                picBall.Top = picPlayer.Top - 39;
+                Collision();
             }
 
             //Detect collision between ball and brick
@@ -438,7 +438,7 @@ namespace Breakout_Game
         //Method for collisions        
         public void Collision()
         {
-            //max speed is 11
+            //max speed is 15
             if (Speed < 15)
             {
                 Velocity.X *= 1.1f;
