@@ -54,7 +54,7 @@ namespace Breakout_Game
             InitializeComponent();
             lblGamePaused.Text = String.Empty;
             lblPressEnter.Text = String.Empty;
-        }
+        }//END OF METHOD
 
 
 
@@ -122,24 +122,33 @@ namespace Breakout_Game
             //Detect collision between ball and paddle
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
-                picBall.Top = picPlayer.Top - 39;
                 Collision();
+                //if (picBall.Top >= picPlayer.Top)
+                //{
+
+                //    if (picBall.Left >= picPlayer.Right)
+                //    {
+                //        picBall.Left = picPlayer.Right + 1;
+                //        Collision();
+                //    }
+                //    if (picBall.Right >= picPlayer.Left)
+                //    {
+                //        picBall.Left = picPlayer.Left - 25;
+                //        Collision();
+                //    }
+                //    else
+                //    {
+                //        picBall.Top = picPlayer.Top - 30;
+                //        Collision();
+                //    }
+
+                //    Collision();
+                //}
+
             }
 
             //Detect collision between ball and brick
-            foreach (Control x in this.Controls)
-            {
-                if (x is PictureBox && x.Tag == "block")
-                {
-                    if (picBall.Bounds.IntersectsWith(x.Bounds))
-                    {
-                        this.Controls.Remove(x);
-                        Collision();
-                        score++;
-                    }
-
-                }
-            }
+            
             //Ball hits the top of the client
             if (picBall.Top <= 0)
             {
@@ -193,7 +202,7 @@ namespace Breakout_Game
                 startofgame = true;
                 CanSpace = true;
             }
-        }
+        }//END OF METHOD
 
 
 
@@ -291,7 +300,65 @@ namespace Breakout_Game
                     lblPressEnter.Text = "Press ENTER to continue.";
                 }
             }
-        }
+
+            //Easter Egg key
+            if(e.KeyCode == Keys.E)
+            {
+                //random facts
+                tmrGame.Enabled = false;
+
+                int[] Tips = new int[8];
+
+                Random RandomTip = new Random();
+                for (int i = 0; i < 8; i++)
+                {
+                    Tips[i] = RandomTip.Next(1, 9);
+                }
+                if (Tips[0] == 0)
+                {
+                    MessageBox.Show("Random Fact #1/8: Banging your head against the wall burns 150 calories per hour.");
+                }
+                if (Tips[0] == 1)
+                {
+                    MessageBox.Show("Random Fact #2/8: A flock of cows is known as a murder.");
+                }
+                if (Tips[0] == 2)
+                {
+                    MessageBox.Show("Random Fact #3/8: Catfish are the only animals that naturally have an odd number of whiskers.");
+                }
+                if (Tips[0] == 3)
+                {
+                    MessageBox.Show("Random Fact #4/8: According to Genesis 1:20-22, the chicken came before the egg.");
+                }
+                if (Tips[0] == 4)
+                {
+                    MessageBox.Show("Random Fact #5/8: Birds don't urinate.");
+                }
+                if (Tips[0] == 5)
+                {
+                    MessageBox.Show("Random Fact #6/8: Six is afraid of seven. He said something about seven eating nine.");
+                }
+                if (Tips[0] == 6)
+                {
+                    MessageBox.Show("Random Fact #7/8: Mel Blanc, the voice of Bugs Bunny, was allergic to carrots.");
+                }
+                if (Tips[0] == 7)
+                {
+                    MessageBox.Show("Random Fact #8/8: Every year more than 2500 left-handed people are killed from using right-handed products." +
+                        "\n...One of this game's coders are left handed...");
+                }
+
+                if (startofgame == true)
+                {
+                    lblPressEnter.Text = "Press SPACEBAR to begin.";
+                }
+                else
+                {
+                    lblPressEnter.Text = "Press ENTER to continue.";
+                }
+            }
+        }//END OF METHOD
+
 
         private void GameClient_KeyUp(object sender, KeyEventArgs e)
         {
@@ -301,7 +368,7 @@ namespace Breakout_Game
             {
                 Player = PlayerState.None;
             }
-        }
+        }//END OF METHOD
 
 
 
@@ -317,13 +384,15 @@ namespace Breakout_Game
         {
             //Restart the game and all values
             ResetGame();
-        }
+        }//END OF METHOD
+
 
         private void mnuClose_Click(object sender, EventArgs e)
         {
             //Exit the game
             Application.Exit();
-        }
+        }//END OF METHOD
+
 
         private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -340,7 +409,9 @@ namespace Breakout_Game
             {
                 lblPressEnter.Text = "Press ENTER to continue.";
             }
-        }
+        }//END OF METHOD
+
+
 
         private void rulesOfTheGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -363,7 +434,8 @@ namespace Breakout_Game
             {
                 lblPressEnter.Text = "Press ENTER to continue.";
             }
-        }
+        }//END OF METHOD
+
 
         private void mnuLevels_Click(object sender, EventArgs e)
         {
@@ -420,7 +492,8 @@ namespace Breakout_Game
             tmrGame.Enabled = false;
             CanSpace = true;
             startofgame = true;
-        }
+        }//END OF METHOD
+
 
         //Methods for the ball
 
@@ -437,7 +510,8 @@ namespace Breakout_Game
             float Angle = MathHelper.ToRadians(r * 45);
 
             return Angle;
-        }
+        }//END OF METHOD
+
 
         //Method for resetting the ball
         void Reset()
@@ -446,13 +520,14 @@ namespace Breakout_Game
             Position = new Vector2((ClientSize.Width - picBall.Width) / 2, (ClientSize.Height - (picBall.Height * 4)));
             float Angle = FindRandomAngle();
             Velocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
-        }
+        }//END OF METHOD
+
 
         //Method for collisions        
         public void Collision()
         {
-            //max speed is 15
-            if (Speed < 15)
+            //max speed is 10
+            if (Speed < 10)
             {
                 Velocity.X *= 1.1f;
                 Velocity.Y *= -1.1f;
@@ -464,6 +539,65 @@ namespace Breakout_Game
                 Velocity.Y *= -1;
             }
         }
+
+        public void RandomFacts()
+        {
+            //random facts
+            tmrGame.Enabled = false;
+
+            int[] Tips = new int[8];
+
+            Random RandomTip = new Random();
+            for (int i = 0; i < 8; i++)
+            {
+                Tips[i] = RandomTip.Next(1, 9);
+            }
+            if (Tips[0] == 0)
+            {
+                MessageBox.Show("Random Fact #1/8: Banging your head against the wall burns 150 calories per hour.");
+            }
+            if (Tips[0] == 1)
+            {
+                MessageBox.Show("Random Fact #2/8: A flock of cows is known as a murder.");
+            }
+            if (Tips[0] == 2)
+            {
+                MessageBox.Show("Random Fact #3/8: Catfish are the only animals that naturally have an odd number of whiskers.");
+            }
+            if (Tips[0] == 3)
+            {
+                MessageBox.Show("Random Fact #4/8: According to Genesis 1:20-22, the chicken came before the egg.");
+            }
+            if (Tips[0] == 4)
+            {
+                MessageBox.Show("Random Fact #5/8: Birds don't urinate.");
+            }
+            if (Tips[0] == 5)
+            {
+                MessageBox.Show("Random Fact #6/8: Six is afraid of seven. He said something about seven eating nine.");
+            }
+            if (Tips[0] == 6)
+            {
+                MessageBox.Show("Random Fact #7/8: Mel Blanc, the voice of Bugs Bunny, was allergic to carrots.");
+            }
+            if (Tips[0] == 7)
+            {
+                MessageBox.Show("Random Fact #8/8: Every year more than 2500 left-handed people are killed from using right-handed products." +
+                    "\n...One of this game's coders is left handed...");
+            }
+
+            if (startofgame == true)
+            {
+                lblPressEnter.Text = "Press SPACEBAR to begin.";
+            }
+            else
+            {
+                lblPressEnter.Text = "Press ENTER to continue.";
+            }
+
+            //  MessageBox.Show("Random Tip:");
+
+        }//END OF METHOD
 
     }//End of form
 }
