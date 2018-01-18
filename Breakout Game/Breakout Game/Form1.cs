@@ -48,6 +48,8 @@ namespace Breakout_Game
         float Speed; //speed of ball
         Vector2 Position, Velocity; //position and velocity of the ball
 
+        int[] Tips = new int[8];
+
 
         public GameClient()
         {
@@ -545,8 +547,6 @@ namespace Breakout_Game
             //random facts
             tmrGame.Enabled = false;
 
-            int[] Tips = new int[8];
-
             Random RandomTip = new Random();
             for (int i = 0; i < 8; i++)
             {
@@ -584,6 +584,14 @@ namespace Breakout_Game
             {
                 MessageBox.Show("Random Fact #8/8: Every year more than 2500 left-handed people are killed from using right-handed products." +
                     "\n...One of this game's coders is left handed...");
+            }
+
+            int[] Temp = new int[7];
+            Tips = new int[8];
+
+            for (int i = 1; i < 7; i++)
+            {
+                Tips[i] = Temp[i];
             }
 
             if (startofgame == true)
