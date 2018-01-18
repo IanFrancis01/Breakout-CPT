@@ -152,7 +152,7 @@ namespace Breakout_Game
             //Detect collision between ball and brick
             
             //Ball hits the top of the client
-            if (picBall.Top <= 0)
+            if (picBall.Top <= 24)
             {
                 Velocity.Y *= -1;
             }
