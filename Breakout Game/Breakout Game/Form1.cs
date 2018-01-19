@@ -50,6 +50,12 @@ namespace Breakout_Game
         float Speed; //speed of ball
         Vector2 Position, Velocity; //position and velocity of the ball
 
+        int[,] Bricks = {{3, 3, 3, 3, 3, 3, 3, 3},
+                         {3, 3, 3, 3, 3, 3, 3, 3},
+                         {2, 2, 2, 2, 2, 2, 2, 2},
+                         {2, 2, 2, 2, 2, 2, 2, 2},
+                         {1, 1, 1, 1, 1, 1, 1, 1}};
+
 
         public GameClient()
         {
@@ -461,19 +467,32 @@ namespace Breakout_Game
 
         public void BrickCollision()
         {
-            foreach (Control brick in this.Controls)
-            {
-                if (brick is PictureBox & brick.Tag == "block")
+          //loop rows
+            for (int i = 0; i < 8; i++)
+			{
+                //loop columns
+                for (int j = 0; j < 5; j++)
                 {
-                    if (picBall.Bounds.IntersectsWith(brick.Bounds))
+                    if(picBall.Bounds.)
                     {
-                        Controls.Remove(brick);
-                        BallCollision();
-                        score++;
-                    }
 
+                    }
+                   // Bricks[i,j]
                 }
             }
+            //foreach (Control brick in this.Controls)
+            //{
+            //    if (brick is PictureBox & brick.Tag == "block")
+            //    {
+            //        if (picBall.Bounds.IntersectsWith(brick.Bounds))
+            //        {
+            //            Controls.Remove(brick);
+            //            BallCollision();
+            //            score++;
+            //        }
+
+            //    }
+            //}
         }//END OF METHOD
 
         public void InvisbleBricks()
