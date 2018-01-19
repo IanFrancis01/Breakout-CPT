@@ -54,6 +54,7 @@ namespace Breakout_Game
         public GameClient()
         {
             InitializeComponent();
+            InvisbleBricks();
             lblGamePaused.Text = String.Empty;
             lblPressEnter.Text = String.Empty;
         }//END OF METHOD
@@ -70,6 +71,8 @@ namespace Breakout_Game
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
+            VisibleBricks();
+
             if(startofgame == true)
             {
                 picPlayer.Left = 368;
@@ -150,6 +153,7 @@ namespace Breakout_Game
             }
 
             //Detect collision between ball and brick
+            BrickCollision();
             
             //Ball hits the top of the client
             if (picBall.Top <= 24)
@@ -606,6 +610,51 @@ namespace Breakout_Game
             //  MessageBox.Show("Random Tip:");
 
         }//END OF METHOD
+
+
+        //METHODS FOR BRICKS
+
+
+        public void BrickCollision()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox & brick.Tag == "block")
+                {
+                    if (picBall.Bounds.IntersectsWith(brick.Bounds))
+                    {
+                        Controls.Remove(brick);
+                        Collision();
+                        score++;
+                    }
+
+                }
+            }
+        }//END OF METHOD
+
+        public void InvisbleBricks()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox && brick.Tag == "block")
+                {
+                    brick.Hide();
+
+                }
+            }
+        }
+        public void VisibleBricks()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox && brick.Tag == "block")
+                {
+                    brick.Show();
+                }
+            }
+        }
+
+
 
     }//End of form
 }
