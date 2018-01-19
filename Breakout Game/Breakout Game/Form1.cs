@@ -39,6 +39,8 @@ namespace Breakout_Game
         int score = 0;
         //prevents user from being able to hit space during game
         bool CanSpace = true;
+        int LeftBound;
+        int TopBound;
 
         //prevents user from being able hit enter during game
         bool startofgame = true;
@@ -127,9 +129,12 @@ namespace Breakout_Game
 
 
             //Detect collision between ball and paddle
+            LeftBound = picPlayer.Left;
+            TopBound = picPlayer.Top;
 
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
+                BallCollision();
                 /* HOW TO FIX
                  * IF THE BALL HITS ONE OF THE EDGES
                  * CHANGE BOTH THE X AND Y DIRECTIONS
@@ -144,39 +149,38 @@ namespace Breakout_Game
                  * THE BALL ONLY CHANGES Y DIRECTION
                  * UPON IMPACT WITH PLAYER
                  */
-                int left = picPlayer.Left;
-                int top = picPlayer.Top;
 
-                BallCollision();
-                //picPlayer.SetBounds(0, 0, 0, 0);
-                //if (picBall.Bottom > picPlayer.Top)
+                //BallCollision();
+               picPlayer.SetBounds(0, 0, 0, 0);
+
+                ////at left side of the paddle
+                //if (picBall.Left + picBall.Width >= picPlayer.Left && picBall.Top + picBall.Height > picPlayer.Top)
                 //{
-                //    picPlayer.SetBounds(left, top, 100, 20);
+                //    //picBall.Left = picPlayer.Left - picPlayer.Width;
+                //    //picBall.Top = picPlayer.Top - picBall.Height;
+                //    //BallCollision();
+                //    Velocity.X *= -1;
+                //    Velocity.Y *= -1;
+
                 //}
+                ////at right side of the paddle
+                //else if (picBall.Left - picBall.Width <= picPlayer.Right && picBall.Top + picBall.Height > picPlayer.Top)
+                //{
+                //    //picBall.Left = picPlayer.Right + picBall.Width;
+                //    //picBall.Top = picPlayer.Top - picBall.Height;
+                //    //BallCollision();
+                //    Velocity.X *= -1;
+                //    Velocity.Y *= -1;
+                //}
+                //else
+                //{
+                //    BallCollision();
+                //}
+            }
 
-                //at left side of the paddle
-                if (picBall.Left + picBall.Width >= picPlayer.Left && picBall.Top + picBall.Height > picPlayer.Top)
-                {
-                    //picBall.Left = picPlayer.Left - picPlayer.Width;
-                    //picBall.Top = picPlayer.Top - picBall.Height;
-                    //BallCollision();
-                    Velocity.X *= -1;
-                    Velocity.Y *= -1;
-
-                }
-                //at right side of the paddle
-                else if (picBall.Left - picBall.Width <= picPlayer.Right && picBall.Top + picBall.Height > picPlayer.Top)
-                {
-                    //picBall.Left = picPlayer.Right + picBall.Width;
-                    //picBall.Top = picPlayer.Top - picBall.Height;
-                    //BallCollision();
-                    Velocity.X *= -1;
-                    Velocity.Y *= -1;
-                }
-                else
-                {
-                    BallCollision();
-                }
+            if (picBall.Bottom < 533)
+            {
+                picPlayer.SetBounds(LeftBound, TopBound, 100, 20);
             }
 
             //Detect collision between ball and brick
@@ -198,7 +202,7 @@ namespace Breakout_Game
             if(picBall.Top >= ClientSize.Height)
             {
                 //resetting the ball's location
-                Reset();
+                ResetBall();
                 Velocity.X = 0;
                 Velocity.Y = 0;
 
@@ -214,7 +218,7 @@ namespace Breakout_Game
                 //reset the game and all values
 
                 //reset the ball
-                Reset();
+                ResetBall();
                 Velocity.X = 0;
                 Velocity.Y = 0;
 
@@ -264,7 +268,7 @@ namespace Breakout_Game
             {
                 if (CanSpace == true)
                 {
-                    Reset();
+                    ResetBall();
                     tmrGame.Enabled = true;
                     CanSpace = false;
                 }
@@ -462,7 +466,7 @@ namespace Breakout_Game
 
 
         //Method for resetting the ball
-        void Reset()
+        void ResetBall()
         {
             Speed = 6;
             Position = new Vector2((ClientSize.Width - picBall.Width) / 2, (ClientSize.Height - (picBall.Height * 4)));
@@ -536,7 +540,7 @@ namespace Breakout_Game
         void ResetGame()
         {
             //Reset the ball
-            Reset();
+            ResetBall();
             Velocity.X = 0;
             Velocity.Y = 0;
 
