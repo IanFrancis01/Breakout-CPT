@@ -35,7 +35,7 @@ namespace Breakout_Game
 
 
         PlayerState Player = PlayerState.None;
-        int PlayerLives = 3;
+        int PlayerLives;
         int score = 0;
         //prevents user from being able to hit space during game
         bool CanSpace = true;
@@ -48,7 +48,7 @@ namespace Breakout_Game
         float Speed; //speed of ball
         Vector2 Position, Velocity; //position and velocity of the ball
 
-        int[] Tips = new int[8];
+        int[] Fact = new int[8];
 
 
         public GameClient()
@@ -76,6 +76,8 @@ namespace Breakout_Game
             if(startofgame == true)
             {
                 picPlayer.Left = 368;
+                PlayerLives = 3;
+                lblLives.Text = "Lives Left: " + PlayerLives;
                 startofgame = false;
             }
             else
@@ -125,31 +127,35 @@ namespace Breakout_Game
 
 
             //Detect collision between ball and paddle
+
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
-                Collision();
-                //if (picBall.Top >= picPlayer.Top)
-                //{
+                //int left = picPlayer.Left;
+                //int top = picPlayer.Top;
 
-                //    if (picBall.Left >= picPlayer.Right)
-                //    {
-                //        picBall.Left = picPlayer.Right + 1;
-                //        Collision();
-                //    }
-                //    if (picBall.Right >= picPlayer.Left)
-                //    {
-                //        picBall.Left = picPlayer.Left - 25;
-                //        Collision();
-                //    }
-                //    else
-                //    {
-                //        picBall.Top = picPlayer.Top - 30;
-                //        Collision();
-                //    }
+                //picPlayer.SetBounds(0, 0, 0, 0);
+                //BallCollision();
+                //picPlayer.SetBounds(left, top, 100, 20);
 
-                //    Collision();
-                //}
+                //at left side of the paddle
+                if (picBall.Left + picBall.Width >= picPlayer.Left && picBall.Bottom > picPlayer.Top)
+                {
+                    picBall.Left = picPlayer.Left - picPlayer.Width;
+                    picBall.Top = picPlayer.Top - picBall.Height;
+                    BallCollision();
 
+                }
+                //at right side of the paddle
+                else if (picBall.Left - picBall.Width <= picPlayer.Right && picBall.Bottom > picPlayer.Top)
+                {
+                    picBall.Left = picPlayer.Right + picBall.Width;
+                    picBall.Top = picPlayer.Top - picBall.Height; 
+                    BallCollision();
+                }
+                else
+                {
+                    BallCollision();
+                }
             }
 
             //Detect collision between ball and brick
@@ -197,13 +203,13 @@ namespace Breakout_Game
                 picBall.Top = (int)Position.Y;
 
                 //reset the player
-                PlayerLives = 3;
+                //PlayerLives = 3;
                 Player = PlayerState.None;
 
                 //reset labels and other
                 lblGamePaused.Text = "GAME OVER.";
                 lblPressEnter.Text = "Press SPACEBAR to start over.";
-                lblLives.Text = "Lives left: " + PlayerLives;
+                lblLives.Text = "Lives Left: " + PlayerLives;
                 tmrGame.Enabled = false;
                 startofgame = true;
                 CanSpace = true;
@@ -308,60 +314,10 @@ namespace Breakout_Game
             }
 
             //Easter Egg key
-            if(e.KeyCode == Keys.E)
+            if (e.KeyCode == Keys.E)
             {
-                //random facts
-                tmrGame.Enabled = false;
+                RandomFacts();
 
-                int[] Tips = new int[8];
-
-                Random RandomTip = new Random();
-                for (int i = 0; i < 8; i++)
-                {
-                    Tips[i] = RandomTip.Next(1, 9);
-                }
-                if (Tips[0] == 0)
-                {
-                    MessageBox.Show("Random Fact #1/8: Banging your head against the wall burns 150 calories per hour.");
-                }
-                if (Tips[0] == 1)
-                {
-                    MessageBox.Show("Random Fact #2/8: A flock of cows is known as a murder.");
-                }
-                if (Tips[0] == 2)
-                {
-                    MessageBox.Show("Random Fact #3/8: Catfish are the only animals that naturally have an odd number of whiskers.");
-                }
-                if (Tips[0] == 3)
-                {
-                    MessageBox.Show("Random Fact #4/8: According to Genesis 1:20-22, the chicken came before the egg.");
-                }
-                if (Tips[0] == 4)
-                {
-                    MessageBox.Show("Random Fact #5/8: Birds don't urinate.");
-                }
-                if (Tips[0] == 5)
-                {
-                    MessageBox.Show("Random Fact #6/8: Six is afraid of seven. He said something about seven eating nine.");
-                }
-                if (Tips[0] == 6)
-                {
-                    MessageBox.Show("Random Fact #7/8: Mel Blanc, the voice of Bugs Bunny, was allergic to carrots.");
-                }
-                if (Tips[0] == 7)
-                {
-                    MessageBox.Show("Random Fact #8/8: Every year more than 2500 left-handed people are killed from using right-handed products." +
-                        "\n...One of this game's coders are left handed...");
-                }
-
-                if (startofgame == true)
-                {
-                    lblPressEnter.Text = "Press SPACEBAR to begin.";
-                }
-                else
-                {
-                    lblPressEnter.Text = "Press ENTER to continue.";
-                }
             }
         }//END OF METHOD
 
@@ -482,7 +438,7 @@ namespace Breakout_Game
             picBall.Top = (int)Position.Y;
 
             //Reset the player
-            PlayerLives = 3;
+            //PlayerLives = 3;
             Player = PlayerState.None;
             picPlayer.Left = 368;
 
@@ -530,7 +486,7 @@ namespace Breakout_Game
 
 
         //Method for collisions        
-        public void Collision()
+        public void BallCollision()
         {
             //max speed is 10
             if (Speed < 10)
@@ -551,51 +507,44 @@ namespace Breakout_Game
             //random facts
             tmrGame.Enabled = false;
 
-            Random RandomTip = new Random();
+            Random RandomFact = new Random();
             for (int i = 0; i < 8; i++)
             {
-                Tips[i] = RandomTip.Next(1, 9);
+                Fact[i] = RandomFact.Next(1, 9);
             }
-            if (Tips[0] == 0)
+
+            if (Fact[0] == 0)
             {
                 MessageBox.Show("Random Fact #1/8: Banging your head against the wall burns 150 calories per hour.");
             }
-            if (Tips[0] == 1)
+            if (Fact[0] == 1)
             {
-                MessageBox.Show("Random Fact #2/8: A flock of cows is known as a murder.");
+                MessageBox.Show("Random Fact #2/8: A flock of crows is known as a murder.");
             }
-            if (Tips[0] == 2)
+            if (Fact[0] == 2)
             {
                 MessageBox.Show("Random Fact #3/8: Catfish are the only animals that naturally have an odd number of whiskers.");
             }
-            if (Tips[0] == 3)
+            if (Fact[0] == 3)
             {
                 MessageBox.Show("Random Fact #4/8: According to Genesis 1:20-22, the chicken came before the egg.");
             }
-            if (Tips[0] == 4)
+            if (Fact[0] == 4)
             {
                 MessageBox.Show("Random Fact #5/8: Birds don't urinate.");
             }
-            if (Tips[0] == 5)
+            if (Fact[0] == 5)
             {
                 MessageBox.Show("Random Fact #6/8: Six is afraid of seven. He said something about seven eating nine.");
             }
-            if (Tips[0] == 6)
+            if (Fact[0] == 6)
             {
                 MessageBox.Show("Random Fact #7/8: Mel Blanc, the voice of Bugs Bunny, was allergic to carrots.");
             }
-            if (Tips[0] == 7)
+            if (Fact[0] == 7)
             {
                 MessageBox.Show("Random Fact #8/8: Every year more than 2500 left-handed people are killed from using right-handed products." +
-                    "\n...One of this game's coders is left handed...");
-            }
-
-            int[] Temp = new int[7];
-            Tips = new int[8];
-
-            for (int i = 1; i < 7; i++)
-            {
-                Tips[i] = Temp[i];
+                    "\n...Half of this game's development team is left handed...");
             }
 
             if (startofgame == true)
@@ -624,7 +573,7 @@ namespace Breakout_Game
                     if (picBall.Bounds.IntersectsWith(brick.Bounds))
                     {
                         Controls.Remove(brick);
-                        Collision();
+                        BallCollision();
                         score++;
                     }
 

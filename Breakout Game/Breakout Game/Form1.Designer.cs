@@ -183,9 +183,9 @@
             this.lblLives.ForeColor = System.Drawing.Color.White;
             this.lblLives.Location = new System.Drawing.Point(713, 37);
             this.lblLives.Name = "lblLives";
-            this.lblLives.Size = new System.Drawing.Size(101, 24);
+            this.lblLives.Size = new System.Drawing.Size(107, 24);
             this.lblLives.TabIndex = 4;
-            this.lblLives.Text = "Lives left: 3";
+            this.lblLives.Text = "Lives Left: 3";
             // 
             // lblPressEnter
             // 
