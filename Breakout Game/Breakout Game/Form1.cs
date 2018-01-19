@@ -37,10 +37,10 @@ namespace Breakout_Game
         PlayerState Player = PlayerState.None;
         int PlayerLives;
         int score = 0;
+
         //prevents user from being able to hit space during game
         bool CanSpace = true;
-        int LeftBound;
-        int TopBound;
+        int[] Fact = new int[8];
 
         //prevents user from being able hit enter during game
         bool startofgame = true;
@@ -49,8 +49,6 @@ namespace Breakout_Game
         //Ball GameBall = new Ball(picBall);
         float Speed; //speed of ball
         Vector2 Position, Velocity; //position and velocity of the ball
-
-        int[] Fact = new int[8];
 
 
         public GameClient()
@@ -129,8 +127,6 @@ namespace Breakout_Game
 
 
             //Detect collision between ball and paddle
-            LeftBound = picPlayer.Left;
-            TopBound = picPlayer.Top;
 
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
@@ -149,38 +145,6 @@ namespace Breakout_Game
                  * THE BALL ONLY CHANGES Y DIRECTION
                  * UPON IMPACT WITH PLAYER
                  */
-
-                //BallCollision();
-               picPlayer.SetBounds(0, 0, 0, 0);
-
-                ////at left side of the paddle
-                //if (picBall.Left + picBall.Width >= picPlayer.Left && picBall.Top + picBall.Height > picPlayer.Top)
-                //{
-                //    //picBall.Left = picPlayer.Left - picPlayer.Width;
-                //    //picBall.Top = picPlayer.Top - picBall.Height;
-                //    //BallCollision();
-                //    Velocity.X *= -1;
-                //    Velocity.Y *= -1;
-
-                //}
-                ////at right side of the paddle
-                //else if (picBall.Left - picBall.Width <= picPlayer.Right && picBall.Top + picBall.Height > picPlayer.Top)
-                //{
-                //    //picBall.Left = picPlayer.Right + picBall.Width;
-                //    //picBall.Top = picPlayer.Top - picBall.Height;
-                //    //BallCollision();
-                //    Velocity.X *= -1;
-                //    Velocity.Y *= -1;
-                //}
-                //else
-                //{
-                //    BallCollision();
-                //}
-            }
-
-            if (picBall.Bottom < 533)
-            {
-                picPlayer.SetBounds(LeftBound, TopBound, 100, 20);
             }
 
             //Detect collision between ball and brick
