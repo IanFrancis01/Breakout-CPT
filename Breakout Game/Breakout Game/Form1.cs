@@ -130,27 +130,48 @@ namespace Breakout_Game
 
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
-                //int left = picPlayer.Left;
-                //int top = picPlayer.Top;
+                /* HOW TO FIX
+                 * IF THE BALL HITS ONE OF THE EDGES
+                 * CHANGE BOTH THE X AND Y DIRECTIONS
+                 * SO THAT IT CANNOT "RIDE" THE PADDLE
+                 * BUT YOU MUST ALSO REPOSITION THE BALL
+                 * OR THE BOUNDARIES OF THE PLAYER
+                 * SUCH THAT THEY DO NOT COLLIDE
+                 * MULTIPLE TIMES WITHIN ONE FRAME
+                 */
 
+                /* BY DEFAULT
+                 * THE BALL ONLY CHANGES Y DIRECTION
+                 * UPON IMPACT WITH PLAYER
+                 */
+                int left = picPlayer.Left;
+                int top = picPlayer.Top;
+
+                BallCollision();
                 //picPlayer.SetBounds(0, 0, 0, 0);
-                //BallCollision();
-                //picPlayer.SetBounds(left, top, 100, 20);
+                //if (picBall.Bottom > picPlayer.Top)
+                //{
+                //    picPlayer.SetBounds(left, top, 100, 20);
+                //}
 
                 //at left side of the paddle
-                if (picBall.Left + picBall.Width >= picPlayer.Left && picBall.Bottom > picPlayer.Top)
+                if (picBall.Left + picBall.Width >= picPlayer.Left && picBall.Top + picBall.Height > picPlayer.Top)
                 {
-                    picBall.Left = picPlayer.Left - picPlayer.Width;
-                    picBall.Top = picPlayer.Top - picBall.Height;
-                    BallCollision();
+                    //picBall.Left = picPlayer.Left - picPlayer.Width;
+                    //picBall.Top = picPlayer.Top - picBall.Height;
+                    //BallCollision();
+                    Velocity.X *= -1;
+                    Velocity.Y *= -1;
 
                 }
                 //at right side of the paddle
-                else if (picBall.Left - picBall.Width <= picPlayer.Right && picBall.Bottom > picPlayer.Top)
+                else if (picBall.Left - picBall.Width <= picPlayer.Right && picBall.Top + picBall.Height > picPlayer.Top)
                 {
-                    picBall.Left = picPlayer.Right + picBall.Width;
-                    picBall.Top = picPlayer.Top - picBall.Height; 
-                    BallCollision();
+                    //picBall.Left = picPlayer.Right + picBall.Width;
+                    //picBall.Top = picPlayer.Top - picBall.Height;
+                    //BallCollision();
+                    Velocity.X *= -1;
+                    Velocity.Y *= -1;
                 }
                 else
                 {
@@ -422,9 +443,96 @@ namespace Breakout_Game
         /////////////////////////////////////////////////
 
 
+        //METHODS FOR THE BALL
+
+        //Method for finding a random angle.
+        float FindRandomAngle()
+        {
+            Random RandomAngle = new Random();
+
+            int r = 0;
+            while (r % 2 == 0)
+            {
+                r = RandomAngle.Next(1, 8);
+            }
+            float Angle = MathHelper.ToRadians(r * 45);
+
+            return Angle;
+        }//END OF METHOD
 
 
-        //methods for form
+        //Method for resetting the ball
+        void Reset()
+        {
+            Speed = 6;
+            Position = new Vector2((ClientSize.Width - picBall.Width) / 2, (ClientSize.Height - (picBall.Height * 4)));
+            float Angle = FindRandomAngle();
+            Velocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
+        }//END OF METHOD
+
+
+        //Method for ball collisions not including bricks        
+        public void BallCollision()
+        {
+            //max speed is 10
+            if (Speed < 10)
+            {
+                Velocity.X *= 1.1f;
+                Velocity.Y *= -1.1f;
+
+                Speed = (float)Velocity.Length();
+            }
+            else
+            {
+                Velocity.Y *= -1;
+            }
+        }//END OF METHOD
+
+        //METHODS FOR BRICKS
+
+
+        public void BrickCollision()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox & brick.Tag == "block")
+                {
+                    if (picBall.Bounds.IntersectsWith(brick.Bounds))
+                    {
+                        Controls.Remove(brick);
+                        BallCollision();
+                        score++;
+                    }
+
+                }
+            }
+        }//END OF METHOD
+
+        public void InvisbleBricks()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox && brick.Tag == "block")
+                {
+                    brick.Hide();
+
+                }
+            }
+        }//END OF METHOD
+
+        public void VisibleBricks()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox && brick.Tag == "block")
+                {
+                    brick.Show();
+                }
+            }
+        }//END OF METHOD
+
+        //METHODS FOR FORM
+
         void ResetGame()
         {
             //Reset the ball
@@ -455,52 +563,6 @@ namespace Breakout_Game
             CanSpace = true;
             startofgame = true;
         }//END OF METHOD
-
-
-        //Methods for the ball
-
-        //Method for finding a random angle.
-        float FindRandomAngle()
-        {
-            Random RandomAngle = new Random();
-
-            int r = 0;
-            while (r % 2 == 0)
-            {
-                r = RandomAngle.Next(1, 8);
-            }
-            float Angle = MathHelper.ToRadians(r * 45);
-
-            return Angle;
-        }//END OF METHOD
-
-
-        //Method for resetting the ball
-        void Reset()
-        {
-            Speed = 6;
-            Position = new Vector2((ClientSize.Width - picBall.Width) / 2, (ClientSize.Height - (picBall.Height * 4)));
-            float Angle = FindRandomAngle();
-            Velocity = new Vector2((float)(Speed * Math.Cos(Angle)), (float)(Speed * Math.Sin(Angle)));
-        }//END OF METHOD
-
-
-        //Method for collisions        
-        public void BallCollision()
-        {
-            //max speed is 10
-            if (Speed < 10)
-            {
-                Velocity.X *= 1.1f;
-                Velocity.Y *= -1.1f;
-
-                Speed = (float)Velocity.Length();
-            }
-            else
-            {
-                Velocity.Y *= -1;
-            }
-        }
 
         public void RandomFacts()
         {
@@ -559,51 +621,6 @@ namespace Breakout_Game
             //  MessageBox.Show("Random Tip:");
 
         }//END OF METHOD
-
-
-        //METHODS FOR BRICKS
-
-
-        public void BrickCollision()
-        {
-            foreach (Control brick in this.Controls)
-            {
-                if (brick is PictureBox & brick.Tag == "block")
-                {
-                    if (picBall.Bounds.IntersectsWith(brick.Bounds))
-                    {
-                        Controls.Remove(brick);
-                        BallCollision();
-                        score++;
-                    }
-
-                }
-            }
-        }//END OF METHOD
-
-        public void InvisbleBricks()
-        {
-            foreach (Control brick in this.Controls)
-            {
-                if (brick is PictureBox && brick.Tag == "block")
-                {
-                    brick.Hide();
-
-                }
-            }
-        }
-        public void VisibleBricks()
-        {
-            foreach (Control brick in this.Controls)
-            {
-                if (brick is PictureBox && brick.Tag == "block")
-                {
-                    brick.Show();
-                }
-            }
-        }
-
-
 
     }//End of form
 }
