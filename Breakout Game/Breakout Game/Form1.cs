@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using System.Threading;
-
+using CardPickerGame;
 
 namespace Breakout_Game
 {
@@ -26,11 +26,12 @@ namespace Breakout_Game
     {
         
         
-        
+        PictureBox[,] bricksp = new PictureBox[7,4];
         ///////////////////////////////////////////////////
         ////////////////GLOBAL VARIABLES//////////////////
         /////////////////////////////////////////////////
 
+        Grid myGrid;
 
 
 
@@ -77,7 +78,9 @@ namespace Breakout_Game
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            VisibleBricks();
+            Graphics g = this.CreateGraphics();
+            myGrid = new Grid(5, 8, 91);
+            myGrid.Draw(g,50,100);
 
             if(startofgame == true)
             {
@@ -98,6 +101,7 @@ namespace Breakout_Game
             lblWelcome.Text = String.Empty;
             lblBegin.Text = String.Empty;
             lblForHelp.Text = String.Empty;
+            lblTitle.Text = String.Empty;
 
             //Move player
             if (Player == PlayerState.Left)
@@ -136,7 +140,22 @@ namespace Breakout_Game
 
             if (picPlayer.Bounds.IntersectsWith(picBall.Bounds))
             {
-                BallCollision();
+                if(picBall.Left >= (picPlayer.Right - 12) || picBall.Right <= (picPlayer.Left + 12))
+                {
+                    Velocity.X *= -1.1f;
+                    Velocity.Y *= -1.1f;
+
+                    Position = new Vector2(picBall.Left, (picPlayer.Top - 25));
+                }
+                else
+                {
+                    BallCollision();
+                }
+
+                Position += Velocity;
+                picBall.Left = (int)Position.X;
+                picBall.Top = (int)Position.Y;
+
                 /* HOW TO FIX
                  * IF THE BALL HITS ONE OF THE EDGES
                  * CHANGE BOTH THE X AND Y DIRECTIONS
@@ -183,10 +202,10 @@ namespace Breakout_Game
             }
 
             //Check if out of lives
-            if(PlayerLives <= 0)
+            if(PlayerLives == 0)
             {
                 //reset the game and all values
-
+                
                 //reset the ball
                 ResetBall();
                 Velocity.X = 0;
@@ -205,6 +224,7 @@ namespace Breakout_Game
                 lblGamePaused.Text = "GAME OVER.";
                 lblPressEnter.Text = "Press SPACEBAR to start over.";
                 lblLives.Text = "Lives Left: " + PlayerLives;
+                lblTitle.Text = "Breakout Game";
                 tmrGame.Enabled = false;
                 startofgame = true;
                 CanSpace = true;
@@ -230,6 +250,7 @@ namespace Breakout_Game
                 if (tmrGame.Enabled == false && startofgame == false)
                 {
                     tmrGame.Enabled = true;
+                    lblTitle.Text = "Breakout Game";
                 }
             }
 
@@ -243,12 +264,18 @@ namespace Breakout_Game
                     CanSpace = false;
                 }
             }
+            if(e.KeyCode == Keys.Space && PlayerLives <= 0)
+            {
+                VisibleBricks();
+                BrickDecollision();
+            }
 
             //If escape key is pressed, disable the timer, pausing the game.
             if (e.KeyCode == Keys.Escape)
             {
                 tmrGame.Enabled = false;
                 lblGamePaused.Text = "Game Paused";
+                lblTitle.Text = "Breakout Game";
 
                 if (startofgame == true)
                 {
@@ -467,34 +494,34 @@ namespace Breakout_Game
 
         public void BrickCollision()
         {
-          //loop rows
-            for (int i = 0; i < 8; i++)
-			{
-                //loop columns
-                for (int j = 0; j < 5; j++)
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox & brick.Tag == "block")
                 {
-                    if(picBall.Bounds.)
+                    if (picBall.Bounds.IntersectsWith(brick.Bounds))
                     {
-
+                        Controls.Remove(brick);
+                        BallCollision();
+                        score++;
                     }
-                   // Bricks[i,j]
+
                 }
             }
-            //foreach (Control brick in this.Controls)
-            //{
-            //    if (brick is PictureBox & brick.Tag == "block")
-            //    {
-            //        if (picBall.Bounds.IntersectsWith(brick.Bounds))
-            //        {
-            //            Controls.Remove(brick);
-            //            BallCollision();
-            //            score++;
-            //        }
-
-            //    }
-            //}
         }//END OF METHOD
 
+        public void BrickDecollision()
+        {
+            foreach (Control brick in this.Controls)
+            {
+                if (brick is PictureBox & brick.Tag == "block")
+                {
+                    if (startofgame == false &&PlayerLives == 0)
+                    {
+                        Controls.Add(brick);
+                    }
+                }
+            }
+        }
         public void InvisbleBricks()
         {
             foreach (Control brick in this.Controls)
@@ -517,12 +544,16 @@ namespace Breakout_Game
                 }
             }
         }//END OF METHOD
+        
 
         //METHODS FOR FORM
 
         void ResetGame()
         {
+            
             //Reset the ball
+            InvisbleBricks();
+            VisibleBricks();
             ResetBall();
             Velocity.X = 0;
             Velocity.Y = 0;
@@ -542,6 +573,7 @@ namespace Breakout_Game
             lblWelcome.Text = "Welcome!";
             lblBegin.Text = "Please press the SPACEBAR to play.";
             lblForHelp.Text = "For controls and rules of the game,\n              press ''='' at any time.";
+            lblTitle.Text = "Breakout Game";
             lblGamePaused.Text = String.Empty;
             lblPressEnter.Text = String.Empty;
 
@@ -607,6 +639,16 @@ namespace Breakout_Game
 
             //  MessageBox.Show("Random Tip:");
 
+        }
+
+        private void GameClient_Paint(object sender, PaintEventArgs e)
+        {
+            if (myGrid != null)
+            {
+                Graphics g = this.CreateGraphics();
+                myGrid.Draw(g, 50, 100);
+
+            }
         }//END OF METHOD
 
     }//End of form
